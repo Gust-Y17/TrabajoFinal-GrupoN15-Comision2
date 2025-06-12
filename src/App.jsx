@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 //import Home from './componentes/pages/home'
 import Favorites from './componentes/pages/favorito'
 import ProductForm from './componentes/pages/FormProducto'
+import Home from './componentes/pages/home'
 
 function App() {
   return (
