@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-function ProductosForm({ product = null, onSave, onCancel }) {
+function ProductosForm({addprod, product = null, onCancel}) {
   const [formData, setFormData] = useState({
     title: '',
     price: '',
@@ -46,7 +46,7 @@ function ProductosForm({ product = null, onSave, onCancel }) {
       id: product ? product.id : Date.now()
     }
 
-    onSave(productData)
+    addprod(productData)
   }
 
   return (
