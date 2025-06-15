@@ -1,16 +1,26 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-//import Home from './componentes/pages/home'
 import Favorites from './componentes/pages/favorito'
 import ProductForm from './componentes/pages/FormProducto'
 import Home from './componentes/pages/home'
-import ListProducto from './componentes/pages/ListProducto'
-import { useState } from 'react' 
-function App() {
+ import { useState } from 'react' 
+ 
+const App = () => {
   const [productos, setProductos] = useState([])
 
   const agregar = (nuevoprod) => {
     setProductos([...productos, nuevoprod])
   }
+
+  const editProducto = (productoEditado) => {
+    setProductos(productos.map((pro) => 
+    pro.id === productoEditado.id ? productoEditado : pro))
+  }
+
+  const eliminarProd = (id) => {
+    setProductos ((prev) => prev.filter((pr) => pr.id !== id))
+  };
+
+
 
   return (
     <Router>
@@ -25,6 +35,8 @@ function App() {
           <Route path="/" element={
             <Home 
             productos={productos}  
+            onEditar={editProducto}
+            onEliminar={eliminarProd}
             />
           } />
 
@@ -37,6 +49,8 @@ function App() {
             }
             />
           } />
+
+
           
         </Routes>
       </div>

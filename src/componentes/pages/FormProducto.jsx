@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 
 function ProductosForm({addprod, product = null, onCancel}) {
   const [formData, setFormData] = useState({
@@ -8,19 +8,6 @@ function ProductosForm({addprod, product = null, onCancel}) {
     category: '',
     image: ''
   })
-
-  // Si hay un producto cargar sus datos para editarlos
-  useEffect(() => {
-    if (product) {
-      setFormData({
-        title: product.title || '',
-        price: product.price || '',
-        description: product.description || '',
-        category: product.category || '',
-        image: product.image || ''
-      })
-    }
-  }, [product])
 
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -47,12 +34,18 @@ function ProductosForm({addprod, product = null, onCancel}) {
     }
 
     addprod(productData)
+    setFormData({
+         title: '',
+    price: '',
+    description: '',
+    category: '',
+    image: ''
+    })
   }
 
   return (
     <div>
-      <h2>{product ? 'Editar Producto' : 'Crear Producto'}</h2>
-      
+       
       <form onSubmit={handleSubmit}>
         <div>
           <label>Título *</label><br />
