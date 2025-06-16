@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import { Button } from 'react-bootstrap'
 
-function ProductosForm({addprod, product = null, onCancel}) {
+function ProductosForm({addprod, product = null}) {
   const [formData, setFormData] = useState({
     title: '',
     price: '',
@@ -9,23 +10,42 @@ function ProductosForm({addprod, product = null, onCancel}) {
     image: ''
   })
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
+ const handleChange = (e) => {
+  const { name, value, files } = e.target;
+  
+  if (name === 'image' && files.length > 0) {
+    const file = files[0];
+    const imageURL = URL.createObjectURL(file);
+    setFormData(prev => ({
+      ...prev,
+      image: imageURL
+    }));
+  } else {
     setFormData(prev => ({
       ...prev,
       [name]: value
-    }))
+    }));
   }
+}
+  
+      const resetForm = () => {
+        setFormData({
+             title: '',
+        price: '',
+        description: '',
+        category: '',
+        image: ''
+        })
+      }
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    
-    // validación básica
-    if (!formData.title || !formData.price) {
-      alert('Título y precio son obligatorios')
-      return
+   const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+   
+          if (!form.checkValidity()) {
+      form.classList.add('was-validated');
+      return;
     }
-
     // crea objeto producto
     const productData = {
       ...formData,
@@ -34,49 +54,54 @@ function ProductosForm({addprod, product = null, onCancel}) {
     }
 
     addprod(productData)
-    setFormData({
-         title: '',
-    price: '',
-    description: '',
-    category: '',
-    image: ''
-    })
+    resetForm();
+    form.classList.remove('was-validated');
   }
+
+
 
   return (
     <div>
        
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Título *</label><br />
-          <input
+      <form onSubmit={handleSubmit} className='needs-validation' noValidate>
+         <input
+            className="form-control"
             type="text"
             name="title"
             value={formData.title}
             onChange={handleChange}
+            placeholder="nombre del producto"
+            pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
             required
           />
-        </div>
-
-        <div>
-          <label>Precio *</label><br />
+          <div className='invalid-feedback'>
+            introducir solo letras. Este campo es obligatorio
+          </div>
+ 
+           
           <input
+            className="form-control"
             type="number"
             name="price"
             value={formData.price}
             onChange={handleChange}
-            step="0.01"
+            placeholder="precio"
             min="0"
+             step="0.01"
             required
           />
-        </div>
-
-        <div>
-          <label>Categoría</label><br />
-          <select
+          <div className='invalid-feedback'>
+            introducir solo numeros mayores a 0. Este campo es obligatorio
+          </div>
+ 
+        
+           <select
+            className="form-control"
             name="category"
             value={formData.category}
             onChange={handleChange}
+            placeholder="categoria"
+            required
           >
             <option value="">Seleccionar categoría</option>
             <option value="electronics">Electronics</option>
@@ -84,37 +109,33 @@ function ProductosForm({addprod, product = null, onCancel}) {
             <option value="men's clothing">Men's clothing</option>
             <option value="women's clothing">Women's clothing</option>
           </select>
-        </div>
+        
 
-        <div>
-          <label>Descripción</label><br />
-          <textarea
+        
+           <textarea
+             className="form-control"
             name="description"
             value={formData.description}
             onChange={handleChange}
+            placeholder="descripcion del producto"
+             pattern="^(?=.*[A-Za-zÁÉÍÓÚáéíóúÑñ])(?=.*\d)[A-Za-zÁÉÍÓÚáéíóúÑñ\d\s]+$"
             rows="3"
+            required
           />
-        </div>
-
-        <div>
-          <label>URL de la imagen</label><br />
-          <input
-            type="url"
+        
+           <input
+            className="form-control"
+            type="file"
             name="image"
-            value={formData.image}
+            accept="image/*"
+            
             onChange={handleChange}
-            placeholder="https://ejemplo.com/imagen.jpg"
+      
+            required
           />
-        </div>
-
         <div>
-          <button type="submit">
-            {product ? 'Actualizar' : 'Crear'}
-          </button>
-          
-          <button type="button" onClick={onCancel}>
-            Cancelar
-          </button>
+          <Button variant="primary" type="submit" >GUARDAR</Button>
+          <Button variant="danger" onClick={() => { resetForm(); } }>Cancelar </Button>
         </div>
       </form>
     </div>

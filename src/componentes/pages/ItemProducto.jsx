@@ -1,58 +1,82 @@
+
 import {  useState } from "react";
 import { Button } from "react-bootstrap";
-const ItemProducto = ({productos, onGuardar,onCancelar}) => {
+const ItemProducto = ({producto, onGuardar,onCancelar}) => {
 
-    const [prodEditado,setProdEdtado] = useState({...productos})
+    const [prodEditado,setProdEdtado] = useState({...producto})
 
-    const handleChange = (e) => {
-        const {name, value} = e.target
-        setProdEdtado({
-            ...prodEditado,
-            [name]:value
-        });
-    };
+   const handleChange = (e) => {
+  const { name, value, files } = e.target;
+  
+  if (name === 'image' && files.length > 0) {
+    const file = files[0];
+    const imageURL = URL.createObjectURL(file);
+    setProdEdtado(prev => ({
+      ...prev,
+      image: imageURL
+    }));
+  } else {
+    setProdEdtado(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  }
+}
 
     const handleSubmit = (e) => {
-        e.preventDeFault();
+        e.preventDefault();
         const form = e.target;
           if (!form.checkValidity()) {
       form.classList.add('was-validated');
       return;
     }
-    onGuardar(setProdEdtado)
+    onGuardar(prodEditado)
 
   };
 
 return(
 <div>
     <h4>EDITANDO PRODUCTO......</h4>
-    <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-        
-        <input
+     
+      <form onSubmit={handleSubmit} className='needs-validation' noValidate>
+         <input
+            className="form-control"
             type="text"
             name="title"
             value={prodEditado.title}
             onChange={handleChange}
-            required
+            placeholder="nombre del producto"
+            pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+             
           />
+          <div className='invalid-feedback'>
+            introducir solo letras. Este campo es obligatorio
+          </div>
  
-           <label>Precio *</label><br />
+           
           <input
+            className="form-control"
             type="number"
             name="price"
             value={prodEditado.price}
             onChange={handleChange}
-            step="0.01"
+            placeholder="precio"
             min="0"
-            required
+             step="0.01"
+             
           />
+          <div className='invalid-feedback'>
+            introducir solo numeros mayores a 0. Este campo es obligatorio
+          </div>
  
         
-          <label>Categoría</label><br />
-          <select
+           <select
+            className="form-control"
             name="category"
             value={prodEditado.category}
             onChange={handleChange}
+            placeholder="categoria"
+             
           >
             <option value="">Seleccionar categoría</option>
             <option value="electronics">Electronics</option>
@@ -63,24 +87,28 @@ return(
         
 
         
-          <label>Descripción</label><br />
-          <textarea
+           <textarea
+             className="form-control"
             name="description"
             value={prodEditado.description}
             onChange={handleChange}
+            placeholder="descripcion del producto"
+             pattern="^(?=.*[A-Za-zÁÉÍÓÚáéíóúÑñ])(?=.*\d)[A-Za-zÁÉÍÓÚáéíóúÑñ\d\s]+$"
             rows="3"
+         
           />
         
-          <label>URL de la imagen</label><br />
-          <input
-            type="url"
+            
+           <input
+            className="form-control"
+            type="file"
             name="image"
-            value={prodEditado.image}
+            accept="image/*"
             onChange={handleChange}
-            placeholder="https://ejemplo.com/imagen.jpg"
+           
           />
-    <div>
-        <Button variant="primary" type="submit" >GUARDAR</Button>
+        <div>
+          <Button variant="primary" type="submit" >GUARDAR</Button>
         <Button variant="danger" type="button" onClick={onCancelar}>CANCELAR</Button>
     </div>
 

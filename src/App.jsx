@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Favorites from './componentes/pages/favorito'
 import ProductForm from './componentes/pages/FormProducto'
 import Home from './componentes/pages/home'
@@ -11,10 +12,11 @@ const App = () => {
     setProductos([...productos, nuevoprod])
   }
 
-  const editProducto = (productoEditado) => {
-    setProductos(productos.map((pro) => 
-    pro.id === productoEditado.id ? productoEditado : pro))
-  }
+  const editProducto = (prodEditado) => {
+  setProductos(prev =>
+    prev.map(p => (p.id === prodEditado.id ? prodEditado : p))
+  );
+};
 
   const eliminarProd = (id) => {
     setProductos ((prev) => prev.filter((pr) => pr.id !== id))
@@ -44,9 +46,6 @@ const App = () => {
           <Route path="/crear-producto" element={
             <ProductForm 
             addprod={agregar}
-            onCancel={() => 
-              console.log("cancelado")
-            }
             />
           } />
 
