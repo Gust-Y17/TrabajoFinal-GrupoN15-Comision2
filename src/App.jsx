@@ -1,11 +1,13 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Favorites from "./componentes/favorito";
-import ProductForm from "./componentes/FormProducto";
-import Home from "./componentes/home";
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Favorito from './componentes/favorito';
+import ProductosForm from './componentes/ProductosForm.jsx'
+import Home from './componentes/home'
 import NavBar from "./componentes/NavBar";
-import { useState } from "react";
-import "./App.css";
+ import { useState } from 'react' 
+ import "./App.css";
 
+ 
 const App = () => {
   const [productos, setProductos] = useState([]);
 
@@ -13,11 +15,11 @@ const App = () => {
     setProductos([...productos, nuevoprod]);
   };
 
-  const editProducto = (productoEditado) => {
-    setProductos(productos.map((pro) =>
-      pro.id === productoEditado.id ? productoEditado : pro
-    ));
-  };
+   const editProducto = (prodEditado) => {
+  setProductos(prev =>
+    prev.map(p => (p.id === prodEditado.id ? prodEditado : p))
+  );
+};
 
   const eliminarProd = (id) => {
     setProductos(prev => prev.filter(pr => pr.id !== id));
@@ -35,15 +37,13 @@ const App = () => {
               onEditar={editProducto}
               onEliminar={eliminarProd}
             />
-          }
-        />
-        <Route path="/favoritos" element={<Favorites />} />
-        <Route
-          path="/crear-producto"
-          element={
-            <ProductForm
-              addprod={agregar}
-              onCancel={() => console.log("cancelado")}
+          } />
+
+          <Route path="/favoritos" element={<Favorito />} />
+          <Route path="/crear-producto" element={
+            <ProductosForm 
+            addprod={agregar}
+            
             />
           }
         />

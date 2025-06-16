@@ -1,6 +1,5 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import "/public/numero-15.png";
 
 const NavBar = () => {
   return (

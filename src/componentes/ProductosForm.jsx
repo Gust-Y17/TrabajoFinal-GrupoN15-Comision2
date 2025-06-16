@@ -1,23 +1,76 @@
-import { Button } from 'react-bootstrap';
-import "../estilos/FormularioProducto.css"
+
+import { useState } from 'react'
+import { Button } from 'react-bootstrap'
+
+function ProductosForm({addprod, product = null}) {
+  const [formData, setFormData] = useState({
+    title: '',
+    price: '',
+    description: '',
+    category: '',
+    image: ''
+  })
+
+ const handleChange = (e) => {
+  const { name, value, files } = e.target;
+  
+  if (name === 'image' && files.length > 0) {
+    const file = files[0];
+    const imageURL = URL.createObjectURL(file);
+    setFormData(prev => ({
+      ...prev,
+      image: imageURL
+    }));
+  } else {
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  }
+}
+  
+      const resetForm = () => {
+        setFormData({
+             title: '',
+        price: '',
+        description: '',
+        category: '',
+        image: ''
+        })
+      }
+
+   const handleSubmit = (e) => {
+        e.preventDefault();
+        const form = e.target;
+   
+          if (!form.checkValidity()) {
+      form.classList.add('was-validated');
+      return;
+    }
+    // crea objeto producto
+    const productData = {
+      ...formData,
+      price: parseFloat(formData.price),
+      id: product ? product.id : Date.now()
+    }
+
+    addprod(productData)
+    resetForm();
+    form.classList.remove('was-validated');
+  }
 
 
-function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
-  
-  
-  
+
   return (
-    <div className="formulario-pagina">
-      <div className="formulario-contenedor">
-         
-
-        <form onSubmit={onSubmit} className='needs-validation' noValidate>
+    <div>
+       
+      <form onSubmit={handleSubmit} className='needs-validation' noValidate>
          <input
             className="form-control"
             type="text"
             name="title"
             value={formData.title}
-            onChange={onChange}
+            onChange={handleChange}
             placeholder="nombre del producto"
             pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
             required
@@ -32,7 +85,7 @@ function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
             type="number"
             name="price"
             value={formData.price}
-            onChange={onChange}
+            onChange={handleChange}
             placeholder="precio"
             min="0"
              step="0.01"
@@ -47,7 +100,7 @@ function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
             className="form-control"
             name="category"
             value={formData.category}
-            onChange={onChange}
+            onChange={handleChange}
             placeholder="categoria"
             required
           >
@@ -64,7 +117,7 @@ function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
              className="form-control"
             name="description"
             value={formData.description}
-            onChange={onChange}
+            onChange={handleChange}
             placeholder="descripcion del producto"
              pattern="^(?=.*[A-Za-zÁÉÍÓÚáéíóúÑñ])(?=.*\d)[A-Za-zÁÉÍÓÚáéíóúÑñ\d\s]+$"
             rows="3"
@@ -76,20 +129,16 @@ function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
             type="file"
             name="image"
             accept="image/*"
-            onChange={onChange}
+            onChange={handleChange}
+            required
           />
-          <div className="d-flex gap-2">
-            <Button variant="success" type="submit">
-              {modo === 'editar' ? 'Actualizar' : 'Crear'}
-            </Button>
-            <Button variant="secondary" type="button" onClick={onCancel}>
-              Cancelar
-            </Button>
-          </div>
-        </form>
-      </div>
+        <div>
+          <Button variant="primary" type="submit" >GUARDAR</Button>
+          <Button variant="danger" onClick={() => { resetForm(); } }>Cancelar </Button>
+        </div>
+      </form>
     </div>
-  );
+  )
 }
 
-export default FormularioProducto;
+export default ProductosForm

@@ -1,4 +1,4 @@
-import { Row,Col,Card,Button } from "react-bootstrap"
+import { Row,Col,Card,Button, Container } from "react-bootstrap"
 import ItemProducto from "./ItemProducto"
 import { useState} from "react"
 const Home = ({productos, onEditar, onEliminar}) => {
@@ -14,31 +14,40 @@ const Home = ({productos, onEditar, onEliminar}) => {
  };
 
     return(
-        <>
+        <Container>
         <h1>PAGINA HOME</h1>
-        {productos.lenght === 0 ? (
+        {productos.length === 0 ? (
         <h2>NO HAY PRODUCTOS DISPONIBLES...</h2>) :
          (
-              productos.map((prod) => (
-                 <div key={prod.id}>
-                    <h3>{prod.title} {prod.price}</h3>
+            <Row>
+        {productos.map((prod) => (
+                 <Col key={prod.id}>
+                    <Card>
+
                  {EditProd?.id === prod.id? (
                     <ItemProducto 
-                        producto={EditProd}
-                        onGuardar={guardarEdicion}
+                     producto={EditProd}
+                    onGuardar={guardarEdicion}
                         onCancelar={() => SetEditProd(null)}
                     />) : (
-                        <div> 
-                            <Button onClick={() => handleEditar}></Button>    
+                     <Card.Body>
+                        <Card.Title>Producto: {prod.title}</Card.Title>
+                        <Card.Title>Precio: {prod.price}</Card.Title>
+                        <Card.Img src={prod.image}/>
+                        <div className="boton"> 
+                            <Button onClick={() => handleEditar(prod)}>EDITAR</Button>    
                              <Button onClick={() => onEliminar(prod.id)}>Eliminar</Button>
                             </div>
+                     </Card.Body>
                     )
                  }
+                    </Card>
 
-                 </div>
-    ))
+                 </Col>
+    ))}
+    </Row>
 )}
-</>
+</Container>
 );
 };           
                  
