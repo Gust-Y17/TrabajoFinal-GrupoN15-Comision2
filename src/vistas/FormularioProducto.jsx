@@ -1,53 +1,26 @@
+import { Button } from 'react-bootstrap';
+import "../estilos/FormularioProducto.css"
 
-import {  useState } from "react";
-import { Button } from "react-bootstrap";
-const ItemProducto = ({producto, onGuardar,onCancelar}) => {
 
-    const [prodEditado,setProdEdtado] = useState({...producto})
-
-   const handleChange = (e) => {
-  const { name, value, files } = e.target;
+function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
   
-  if (name === 'image' && files.length > 0) {
-    const file = files[0];
-    const imageURL = URL.createObjectURL(file);
-    setProdEdtado(prev => ({
-      ...prev,
-      image: imageURL
-    }));
-  } else {
-    setProdEdtado(prev => ({
-      ...prev,
-      [name]: value
-    }));
-  }
-}
+  
+  
+  return (
+    <div className="formulario-pagina">
+      <div className="formulario-contenedor">
+         
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        const form = e.target;
-          if (!form.checkValidity()) {
-      form.classList.add('was-validated');
-      return;
-    }
-    onGuardar(prodEditado)
-
-  };
-
-return(
-<div>
-    <h4>EDITANDO PRODUCTO......</h4>
-     
-      <form onSubmit={handleSubmit} className='needs-validation' noValidate>
+        <form onSubmit={onSubmit} className='needs-validation' noValidate>
          <input
             className="form-control"
             type="text"
             name="title"
-            value={prodEditado.title}
-            onChange={handleChange}
+            value={formData.title}
+            onChange={onChange}
             placeholder="nombre del producto"
             pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
-             
+            required
           />
           <div className='invalid-feedback'>
             introducir solo letras. Este campo es obligatorio
@@ -58,12 +31,12 @@ return(
             className="form-control"
             type="number"
             name="price"
-            value={prodEditado.price}
-            onChange={handleChange}
+            value={formData.price}
+            onChange={onChange}
             placeholder="precio"
             min="0"
              step="0.01"
-             
+            required
           />
           <div className='invalid-feedback'>
             introducir solo numeros mayores a 0. Este campo es obligatorio
@@ -73,10 +46,10 @@ return(
            <select
             className="form-control"
             name="category"
-            value={prodEditado.category}
-            onChange={handleChange}
+            value={formData.category}
+            onChange={onChange}
             placeholder="categoria"
-             
+            required
           >
             <option value="">Seleccionar categoría</option>
             <option value="electronics">Electronics</option>
@@ -90,34 +63,33 @@ return(
            <textarea
              className="form-control"
             name="description"
-            value={prodEditado.description}
-            onChange={handleChange}
+            value={formData.description}
+            onChange={onChange}
             placeholder="descripcion del producto"
              pattern="^(?=.*[A-Za-zÁÉÍÓÚáéíóúÑñ])(?=.*\d)[A-Za-zÁÉÍÓÚáéíóúÑñ\d\s]+$"
             rows="3"
-         
+            required
           />
         
-            
            <input
             className="form-control"
             type="file"
             name="image"
             accept="image/*"
-            onChange={handleChange}
-           
+            onChange={onChange}
           />
-        <div>
-          <Button variant="primary" type="submit" >GUARDAR</Button>
-        <Button variant="danger" type="button" onClick={onCancelar}>CANCELAR</Button>
+          <div className="d-flex gap-2">
+            <Button variant="success" type="submit">
+              {modo === 'editar' ? 'Actualizar' : 'Crear'}
+            </Button>
+            <Button variant="secondary" type="button" onClick={onCancel}>
+              Cancelar
+            </Button>
+          </div>
+        </form>
+      </div>
     </div>
-
-        </form> 
-</div>
-
-)
-
-
+  );
 }
 
-export default ItemProducto;
+export default FormularioProducto;

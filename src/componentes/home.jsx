@@ -1,4 +1,4 @@
-import { Row,Col,Card,Button, Container, CardTitle } from "react-bootstrap"
+import { Row,Col,Card,Button, Container } from "react-bootstrap"
 import ItemProducto from "./ItemProducto"
 import { useState} from "react"
 const Home = ({productos, onEditar, onEliminar}) => {

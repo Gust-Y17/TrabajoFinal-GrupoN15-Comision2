@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { Button } from 'react-bootstrap'
 
@@ -128,9 +129,7 @@ function ProductosForm({addprod, product = null}) {
             type="file"
             name="image"
             accept="image/*"
-            
             onChange={handleChange}
-      
             required
           />
         <div>

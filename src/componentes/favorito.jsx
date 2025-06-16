@@ -1,4 +1,4 @@
-function Favorites() {
+const Favorito = () => {
   return (
     <div style={{ padding: '20px' }}>
       <h1>Favoritos</h1>
@@ -7,4 +7,4 @@ function Favorites() {
   )
 }
 
-export default Favorites
+export default Favorito
