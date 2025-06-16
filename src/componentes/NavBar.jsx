@@ -1,0 +1,23 @@
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import "/public/numero-15.png";
+
+const NavBar = () => {
+  return (
+    <Navbar bg="light" variant="dark" expand="lg" fixed="top">
+      <Container>
+        <Navbar.Brand as={Link} to="/">Mi Tienda</Navbar.Brand>
+        <Navbar.Toggle aria-controls="navbar-nav" />
+        <Navbar.Collapse id="navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link as={Link} to="/">Inicio</Nav.Link>
+            <Nav.Link as={Link} to="/favoritos">Favoritos</Nav.Link>
+            <Nav.Link as={Link} to="/crear-producto">Crear Producto</Nav.Link>
+          </Nav>
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default NavBar;
