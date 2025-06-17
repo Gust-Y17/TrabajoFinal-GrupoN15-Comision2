@@ -1,0 +1,24 @@
+.contenido-con-espacio {
+  margin-top: 5.5rem;
+}
+
+.card-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  position: relative;
+}
+
+.card-acciones button {
+  width: 100%;
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+}
+
+.card-acciones .check-esquina {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  margin: 0;
+}

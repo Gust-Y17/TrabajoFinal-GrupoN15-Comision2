@@ -1,9 +1,10 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "../estilos/NavBar.css";
 
 const NavBar = () => {
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+    <Navbar className="navbar-grande" bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
         <Navbar.Brand as={Link} to="/">Grupo 15</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />

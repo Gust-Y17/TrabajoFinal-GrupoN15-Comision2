@@ -1,8 +1,7 @@
 const Favorito = () => {
   return (
     <div style={{ padding: '20px' }}>
-      <h1>Favoritos</h1>
-      <p>Aquí irán los productos favoritos</p>
+      <h1 style={{ textAlign: "center", color: "lightgray" }}>Favoritos</h1>
     </div>
   )
 }
