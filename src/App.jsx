@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { Routes, Route, Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Favorito from './componentes/favorito';
 import ProductosForm from './componentes/ProductosForm.jsx'
@@ -8,7 +8,7 @@ import NavBar from "./componentes/NavBar";
  import "./App.css";
  import Error from './vistas/Error.jsx';
 import About from './componentes/About-us.jsx';
-
+import LoginHome from './componentes/LoginHome.jsx';
 
 
 const App = () => {
@@ -29,13 +29,11 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <>
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
+        <Route path="/" element={<LoginHome />} />
+        <Route path="/home" element={<Home
               productos={productos}
               onEditar={editProducto}
               onEliminar={eliminarProd}
@@ -53,7 +51,7 @@ const App = () => {
         <Route path='*' element={<Error />} />
          <Route path="/About-Us" element={<About/>}/>
       </Routes>
-    </Router>
+    </>
   );
 };
 
