@@ -13,7 +13,7 @@ const ItemProducto = ({productos, onGuardar,onCancelar}) => {
     };
 
     const handleSubmit = (e) => {
-        e.preventDeFault();
+        e.preventDefault();
         const form = e.target;
           if (!form.checkValidity()) {
       form.classList.add('was-validated');
@@ -55,13 +55,12 @@ return(
             onChange={handleChange}
           >
             <option value="">Seleccionar categoría</option>
-            <option value="electronics">Electronics</option>
-            <option value="jewelery">Jewelery</option>
-            <option value="men's clothing">Men's clothing</option>
-            <option value="women's clothing">Women's clothing</option>
+            <option value="Electronicos">"Electronicos"</option>
+            <option value="Joyeria">"Joyeria"</option>
+            <option value="Ropa de Hombre">"Ropa de Hombre"</option>
+            <option value="Ropa de Mujer">"Ropa de Mujer"</option>
           </select>
         
-
         
           <label>Descripción</label><br />
           <textarea

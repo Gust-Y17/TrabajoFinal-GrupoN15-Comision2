@@ -5,6 +5,7 @@ import Home from "./componentes/home";
 import NavBar from "./componentes/NavBar";
 import { useState } from "react";
 import "./App.css";
+import ProductoCard from "./componentes/ProductoCard";
 
 const App = () => {
   const [productos, setProductos] = useState([]);
@@ -47,6 +48,7 @@ const App = () => {
             />
           }
         />
+        <Route path="/producto/:id" element={<ProductoCard />} />
       </Routes>
     </Router>
   );
