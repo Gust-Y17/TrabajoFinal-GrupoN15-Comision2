@@ -4,9 +4,11 @@ import Favorito from './componentes/favorito';
 import ProductosForm from './componentes/ProductosForm.jsx'
 import Home from './componentes/home'
 import NavBar from "./componentes/NavBar";
-import { useState } from 'react'
-import "./App.css";
-import Error from './vistas/Error.jsx';
+ import { useState } from 'react' 
+ import "./App.css";
+ import Error from './vistas/Error.jsx';
+import About from './componentes/About-us.jsx';
+
 
 
 const App = () => {
@@ -44,11 +46,12 @@ const App = () => {
         <Route path="/crear-producto" element={
           <ProductosForm
             addprod={agregar}
-
-          />
-        }
+            
+            />
+          }
         />
         <Route path='*' element={<Error />} />
+         <Route path="/About-Us" element={<About/>}/>
       </Routes>
     </Router>
   );

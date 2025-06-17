@@ -12,8 +12,10 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/">Inicio</Nav.Link>
             <Nav.Link as={Link} to="/favoritos">Favoritos</Nav.Link>
             <Nav.Link as={Link} to="/crear-producto">Crear Producto</Nav.Link>
+            <Nav.Link as={Link} to="/About-US">Sobre Nosotros</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+         
       </Container>
     </Navbar>
   );
