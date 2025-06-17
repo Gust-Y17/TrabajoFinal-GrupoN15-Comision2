@@ -38,7 +38,7 @@ export function AutorisaProvider({children}) {
 
     const autorisacionContextValue = useMemo(() => ({
         user,
-        isAuthenticad  : !!user,
+        isAuthenticat : !!user,
         isloading,
         login,
         logout,
