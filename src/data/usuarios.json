@@ -3,7 +3,7 @@
     "username":"gustavoyev", 
     "password":"gus1", 
     "rol":"ADMINISTRATIVO", 
-    "name":"Gustavo Yevara"
+    "name":"GustavoYevara"
     },
     {"id":"usuario22", 
     "username":"urielzamb", 
@@ -14,7 +14,7 @@
     {"id":"usuario24", 
     "username":"felixQ", 
     "password":"felix3", 
-    "rol":"USUARIO", 
+    "rol":"USUARIOCOMUN",
     "name":"FelipeQuir"
     },
     {"id":"admin11", 

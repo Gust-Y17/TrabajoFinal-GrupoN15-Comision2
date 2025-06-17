@@ -8,27 +8,24 @@ const LoginHome = () => {
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
 
-    const {login,  Authenticat,user} = useAutorisacion();
+    const {login,isAuthenticat,user} = useAutorisacion();
     const navigate = useNavigate();
 
     useEffect(() => {
-            console.log("Authenticat:", Authenticat)
+            console.log("Authenticat:", isAuthenticat)
         console.log("user:", user);
 
-        if (Authenticat) {
-            if (user?.rol === "ADMINISTRATIVO") {
+        if ( isAuthenticat) {
+              const rol = user?.rol?.trim();
+                console.log("Redirigiendo con rol:", rol);
+                
+            if (user?.rol === "ADMINISTRATIVO" || user?.rol === "USUARIOCOMUN") {
                 navigate("/home", {replace:true});
-                if (resultado.success) {
-                 console.log("Redirigiendo al home");
-                 navigate("/");
-                }
-            } else if (user?.rol === "USUARIO  ") {
-                navigate("/home", {replace:true});
-            } else{
-                navigate("*", {replace: true});
+
+            } } else{
+                navigate("", {replace: true});
             }
-        }
-    }, [Authenticat, navigate,user ]);
+    }, [isAuthenticat, navigate,user ]);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
