@@ -2,6 +2,7 @@ import { Navbar, Nav, Container, Button  } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import useAutorisacion from "../hook/useAutorisacion";
 import { useNavigate } from "react-router-dom";
+import "../estilos/NavBar.css";
 
 const NavBar = () => {
   const { isAuthenticat, logout, user } = useAutorisacion();
@@ -14,7 +15,7 @@ const NavBar = () => {
 
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
+    <Navbar className="navbar-grande" bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
         <Navbar.Brand as={Link} to="/">TIENDA</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />

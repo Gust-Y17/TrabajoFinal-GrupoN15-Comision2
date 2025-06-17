@@ -1,0 +1,27 @@
+.form-control {
+  transition: none !important;
+  height: auto;
+  min-height: 42px;
+}
+
+.was-validated .form-control:invalid {
+  border-width: 1px;
+  padding-right: 0.75rem;
+}
+
+.was-validated .form-control:valid,
+.was-validated .form-control:invalid {
+  box-shadow: none !important;
+}
+
+.invalid-feedback {
+  display: none;
+  min-height: 1.2rem;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  color: #dc3545;
+}
+
+.was-validated .form-control:invalid ~ .invalid-feedback {
+  display: block;
+}
