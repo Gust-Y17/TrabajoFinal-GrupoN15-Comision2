@@ -15,7 +15,7 @@ const NavBar = () => {
 
 
   return (
-    <Navbar className="navbar-grande" bg="dark" variant="dark" expand="lg" fixed="top">
+    <Navbar bg="dark" variant="dark" expand="lg" fixed="top" style={{minHeight: "56px", padding: "0.5rem 0"}} >
       <Container>
         <Navbar.Brand as={Link} to="/home">TIENDA</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
@@ -28,12 +28,12 @@ const NavBar = () => {
           </Nav>
 
           {isAuthenticat  &&(
-          <Container>
-            <span className="text-white me-2">Hola, {user?.name}</span>
-            <Button variant="outline-light" size="sm" onClick={handleLogout}>
+          <Nav className="me-auto">
+            <span className="navbar-text text-white me-2">Hola, {user?.name}</span>
+            <Button variant="outline-light" size="sm" onClick={handleLogout} style={{fontSize:"0.875rem"}}>
               Cerrar sesión
             </Button>
-          </Container>
+          </Nav>
           )}
 
         </Navbar.Collapse>
