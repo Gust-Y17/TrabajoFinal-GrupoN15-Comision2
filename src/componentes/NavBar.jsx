@@ -15,7 +15,7 @@ const NavBar = () => {
 
 
   return (
-    <Navbar className="navbar-grande" bg="dark" variant="dark" expand="lg" fixed="top">
+    <Navbar bg="dark" variant="dark" expand="lg" fixed="top" style={{minHeight: "56px", padding: "0.5rem 0"}} >
       <Container>
         <Navbar.Brand as={Link} to="/home">TIENDA</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
