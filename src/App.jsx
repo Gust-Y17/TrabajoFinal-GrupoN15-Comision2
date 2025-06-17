@@ -1,8 +1,5 @@
-<<<<<<< HEAD
-import { Routes, Route, Link, Router } from 'react-router-dom'
-=======
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
->>>>>>> 61256a53516eee7b329ecbe8c33dd80364be83c3
+
+import { Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Favorito from './componentes/favorito';
 import ProductosForm from './componentes/ProductosForm.jsx'
