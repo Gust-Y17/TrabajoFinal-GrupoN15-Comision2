@@ -1,15 +1,20 @@
-import { Row, Col, Card, Button, Container } from "react-bootstrap"
-import { useState } from "react"
-import DetallesProductoModal from "../modales/DetallesProductoModal"
+import { Row,Col,Card,Button, Container } from "react-bootstrap"
+import ItemProducto from "./ItemProducto"
+import { useState} from "react"
+import { useContext } from "react";
+import { ProductosContext } from "../contexts/Productos";
+import DetalleProductoModal from "../modales/DetallesProductoModal";
 import EditarProductoModal from "../modales/EditarProductoModal"
-import "../estilos/Home.css"
+//import useAutorisacion from "../hook/useAutorisacion";
 
-const Home = ({ productos, onEditar, onEliminar }) => {
-  const [EditProd, SetEditProd] = useState(null);
-  const [productoSeleccionado, setProductoSeleccionado] = useState(null);
+const Home = () => {
+     const {productosAPI, eliminarProd,editProducto}= useContext(ProductosContext)
+
+ const [EditProd,SetEditProd] = useState(null);
+   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
-  const handleVerDetalle = (prod) => {
+const handleVerDetalle = (prod) => {
     setProductoSeleccionado(prod);
     setShowModal(true);
   };
@@ -20,25 +25,25 @@ const Home = ({ productos, onEditar, onEliminar }) => {
   };
 
 
-  const handleEditar = (prod) => {
+ const handleEditar = (prod) =>{
     SetEditProd(prod)
   }
 
-  const guardarEdicion = (prodEditado) => {
-    onEditar(prodEditado);
-    SetEditProd(null);
-  };
+ const guardarEdicion = (prodEditado) => {
+    editProducto(prodEditado);
+    SetEditProd(null); 
+ };
 
-  const esUnicoProducto = productos.length === 1;
+  const esUnicoProducto = productosAPI.length === 1;
 
-  return (
+       return (
     <Container className="contenido-con-espacio">
       <h1 style={{ textAlign: "center", color: "lightgray" }}>PAGINA HOME</h1>
-      {productos.length === 0 ? (
+      {productosAPI.length === 0 ? (
         <h2 style={{ textAlign: "center", color: "lightgray" }}>NO HAY PRODUCTOS DISPONIBLES...</h2>) :
         (
           <Row>
-            {productos.map((prod) => (
+            {productosAPI.map((prod) => (
               <Col
                 key={prod.id}
                 xs={12}
@@ -69,7 +74,7 @@ const Home = ({ productos, onEditar, onEliminar }) => {
                       <Button size="sm" variant="warning" onClick={() => handleEditar(prod)}>
                         Editar
                       </Button>
-                      <Button size="sm" variant="danger" onClick={() => onEliminar(prod.id)}>
+                      <Button size="sm" variant="danger" onClick={() => eliminarProd(prod.id)}>
                         Eliminar
                       </Button>
                       <Button size="sm" variant="info" onClick={() => handleVerDetalle(prod)}>
@@ -84,7 +89,7 @@ const Home = ({ productos, onEditar, onEliminar }) => {
           </Row>
         )}
 
-      <DetallesProductoModal
+      <DetalleProductoModal
         show={showModal}
         handleClose={handleCerrarModal}
         producto={productoSeleccionado}

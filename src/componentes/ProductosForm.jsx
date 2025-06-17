@@ -1,8 +1,12 @@
-import { useState } from 'react';
 import { Button, Card, Container } from 'react-bootstrap';
 import "../estilos/ProductosForm.css";
+import { useState } from 'react'
+ import { useContext } from 'react'
+import { ProductosContext } from '../contexts/Productos.jsx';
 
-function ProductosForm({ addprod, product = null }) {
+function ProductosForm ({product = null}) {
+  const {agregar}= useContext(ProductosContext);
+
   const [formData, setFormData] = useState({
     title: '',
     price: '',
@@ -54,7 +58,7 @@ function ProductosForm({ addprod, product = null }) {
       id: product ? product.id : Date.now()
     };
 
-    addprod(productData);
+    agregar(productData)
     resetForm();
     form.classList.remove('was-validated');
   };
