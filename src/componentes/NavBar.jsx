@@ -28,12 +28,12 @@ const NavBar = () => {
           </Nav>
 
           {isAuthenticat  &&(
-          <Container>
-            <span className="text-white me-2">Hola, {user?.name}</span>
-            <Button variant="outline-light" size="sm" onClick={handleLogout}>
+          <Nav className="me-auto">
+            <span className="navbar-text text-white me-2">Hola, {user?.name}</span>
+            <Button variant="outline-light" size="sm" onClick={handleLogout} style={{fontSize:"0.875rem"}}>
               Cerrar sesión
             </Button>
-          </Container>
+          </Nav>
           )}
 
         </Navbar.Collapse>

@@ -43,9 +43,9 @@ const LoginHome = () => {
     };
 
     return(
-        <Container
+        <div
             fluid className="flex justify-content-center align-items-center"
-            style={{minHeight: "100vh", backgroundColor:"#f8f9fa"}}>
+            style={{minHeight: "100vh", width: "100vw", backgroundImage:"url(/public/locoblanco.png)", backgroundPosition:"center", backgroundColor:"gray",display:"flex",justifyContent:"center", alignItems:"center", position:"fixed", top:0, left:0, right:0, bottom:0}}>
 
                 <Card style={{whidth:"100%", maxwidth: "400px"}} className="tamaño">
                     <Card.Body className="p-4">
@@ -86,7 +86,7 @@ const LoginHome = () => {
 
                 </Card>
 
-            </Container>
+            </div>
     )
 
 }
