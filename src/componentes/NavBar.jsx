@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
-    <Navbar bg="light" variant="dark" expand="lg" fixed="top">
+    <Navbar bg="dark" variant="dark" expand="lg" fixed="top">
       <Container>
         <Navbar.Brand as={Link} to="/">Mi Tienda</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
@@ -12,8 +12,10 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/">Inicio</Nav.Link>
             <Nav.Link as={Link} to="/favoritos">Favoritos</Nav.Link>
             <Nav.Link as={Link} to="/crear-producto">Crear Producto</Nav.Link>
+            <Nav.Link as={Link} to="/About-US">Sobre Nosotros</Nav.Link>
           </Nav>
         </Navbar.Collapse>
+         
       </Container>
     </Navbar>
   );

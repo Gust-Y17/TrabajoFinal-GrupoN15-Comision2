@@ -6,6 +6,7 @@ import Home from './componentes/home'
 import NavBar from "./componentes/NavBar";
  import { useState } from 'react' 
  import "./App.css";
+import About from './componentes/About-us.jsx';
 
  
 const App = () => {
@@ -43,10 +44,10 @@ const App = () => {
           <Route path="/crear-producto" element={
             <ProductosForm 
             addprod={agregar}
-            
             />
           }
         />
+        <Route path="/About-Us" element={<About/>}/>
       </Routes>
     </Router>
   );

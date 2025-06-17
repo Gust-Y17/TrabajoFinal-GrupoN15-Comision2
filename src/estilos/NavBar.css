@@ -1,7 +1,7 @@
 .sidebar {
   width: 200px;
   height: 100vh;
-  background-color: #212529;
+  background-color: #11273d;
   position: fixed;
   top: 0;
   left: 0;
@@ -14,11 +14,11 @@
 .sidebar h4 {
   text-align: center;
   margin-bottom: 30px;
-  color: white;
+  color: rgb(57, 35, 35);
 }
 
 .sidebar .nav-link {
-  color: white;
+  color: rgb(33, 28, 28);
   padding: 10px 0;
   text-decoration: none;
 }
