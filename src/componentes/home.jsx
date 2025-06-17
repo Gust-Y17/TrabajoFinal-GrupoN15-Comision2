@@ -1,19 +1,24 @@
 import { Row,Col,Card,Button, Container } from "react-bootstrap"
 import ItemProducto from "./ItemProducto"
 import { useState} from "react"
+
+import useAutorisacion from "../hook/useAutorisacion";
+
 const Home = ({productos, onEditar, onEliminar}) => {
  const [EditProd,SetEditProd] = useState(null);
+
 
  const handleEditar = (prod) =>{
     SetEditProd(prod)
  }
- 
+
  const guardarEdicion = (prodEditado) => {
     onEditar(prodEditado);
     SetEditProd(null); 
  };
 
     return(
+
         <Container>
         <h1>PAGINA HOME</h1>
         {productos.length === 0 ? (
@@ -52,9 +57,4 @@ const Home = ({productos, onEditar, onEliminar}) => {
 };           
                  
                
- 
- 
- 
- 
-  
 export default Home
