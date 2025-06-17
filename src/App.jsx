@@ -9,6 +9,7 @@ import "./App.css";
  import Error from './vistas/Error.jsx';
 import About from './componentes/About-us.jsx';
 import LoginHome from './componentes/LoginHome.jsx';
+import  ProductoCard from './componentes/ProductoCard.jsx';
 
 const App = () => {
 
@@ -18,7 +19,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LoginHome />} />
         <Route path="/home" element={<Home/>} />
-
+        <Route path="/ProductoCard" element={<ProductoCard />} />
         <Route path="/favoritos" element={<Favorito />} />
         <Route path="/crear-producto" element={<ProductosForm/>} />
         <Route path='*' element={<Error />} />
