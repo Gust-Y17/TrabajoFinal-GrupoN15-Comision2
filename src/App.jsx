@@ -6,9 +6,11 @@ import Home from './componentes/home'
 import NavBar from "./componentes/NavBar";
  import { useState } from 'react' 
  import "./App.css";
+ import Error from './vistas/Error.jsx';
 import About from './componentes/About-us.jsx';
 
- 
+
+
 const App = () => {
   const [productos, setProductos] = useState([]);
 
@@ -16,11 +18,11 @@ const App = () => {
     setProductos([...productos, nuevoprod]);
   };
 
-   const editProducto = (prodEditado) => {
-  setProductos(prev =>
-    prev.map(p => (p.id === prodEditado.id ? prodEditado : p))
-  );
-};
+  const editProducto = (prodEditado) => {
+    setProductos(prev =>
+      prev.map(p => (p.id === prodEditado.id ? prodEditado : p))
+    );
+  };
 
   const eliminarProd = (id) => {
     setProductos(prev => prev.filter(pr => pr.id !== id));
@@ -40,14 +42,16 @@ const App = () => {
             />
           } />
 
-          <Route path="/favoritos" element={<Favorito />} />
-          <Route path="/crear-producto" element={
-            <ProductosForm 
+        <Route path="/favoritos" element={<Favorito />} />
+        <Route path="/crear-producto" element={
+          <ProductosForm
             addprod={agregar}
+            
             />
           }
         />
-        <Route path="/About-Us" element={<About/>}/>
+        <Route path='*' element={<Error />} />
+         <Route path="/About-Us" element={<About/>}/>
       </Routes>
     </Router>
   );
