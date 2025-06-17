@@ -4,10 +4,11 @@ import Favorito from './componentes/favorito';
 import ProductosForm from './componentes/ProductosForm.jsx'
 import Home from './componentes/home'
 import NavBar from "./componentes/NavBar";
- import { useState } from 'react' 
- import "./App.css";
+import { useState } from 'react'
+import "./App.css";
+import Error from './vistas/Error.jsx';
 
- 
+
 const App = () => {
   const [productos, setProductos] = useState([]);
 
@@ -15,11 +16,11 @@ const App = () => {
     setProductos([...productos, nuevoprod]);
   };
 
-   const editProducto = (prodEditado) => {
-  setProductos(prev =>
-    prev.map(p => (p.id === prodEditado.id ? prodEditado : p))
-  );
-};
+  const editProducto = (prodEditado) => {
+    setProductos(prev =>
+      prev.map(p => (p.id === prodEditado.id ? prodEditado : p))
+    );
+  };
 
   const eliminarProd = (id) => {
     setProductos(prev => prev.filter(pr => pr.id !== id));
@@ -39,14 +40,15 @@ const App = () => {
             />
           } />
 
-          <Route path="/favoritos" element={<Favorito />} />
-          <Route path="/crear-producto" element={
-            <ProductosForm 
+        <Route path="/favoritos" element={<Favorito />} />
+        <Route path="/crear-producto" element={
+          <ProductosForm
             addprod={agregar}
-            
-            />
-          }
+
+          />
+        }
         />
+        <Route path='*' element={<Error />} />
       </Routes>
     </Router>
   );
