@@ -7,6 +7,8 @@ import NavBar from "./componentes/NavBar";
 import { useState } from 'react'
 import "./App.css";
 import Error from './vistas/Error.jsx';
+import About from './componentes/About-us.jsx';
+import LoginHome from './componentes/LoginHome.jsx';
 
 
 const App = () => {
@@ -27,18 +29,16 @@ const App = () => {
   };
 
   return (
-    <Router>
+    <>
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <Home
-              productos={productos}
-              onEditar={editProducto}
-              onEliminar={eliminarProd}
-            />
-          } />
+        <Route path="/" element={<LoginHome />} />
+        <Route path="/home" element={<Home
+          productos={productos}
+          onEditar={editProducto}
+          onEliminar={eliminarProd}
+        />
+        } />
 
         <Route path="/favoritos" element={<Favorito />} />
         <Route path="/crear-producto" element={
@@ -49,8 +49,9 @@ const App = () => {
         }
         />
         <Route path='*' element={<Error />} />
+        <Route path="/About-Us" element={<About />} />
       </Routes>
-    </Router>
+    </>
   );
 };
 

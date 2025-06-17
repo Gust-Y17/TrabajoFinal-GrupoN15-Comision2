@@ -1,0 +1,27 @@
+[
+    {"id":"admin1", 
+    "username":"gustavoyev", 
+    "password":"gus1", 
+    "rol":"ADMINISTRATIVO", 
+    "name":"Gustavo Yevara"
+    },
+    {"id":"usuario22", 
+    "username":"urielzamb", 
+    "password":"uriel2", 
+    "rol":"USUARIOCOMUN", 
+    "name":"UrielZambrano"
+    },
+    {"id":"usuario24", 
+    "username":"felixQ", 
+    "password":"felix3", 
+    "rol":"USUARIO", 
+    "name":"FelipeQuir"
+    },
+    {"id":"admin11", 
+    "username":"juanponze", 
+    "password":"juan4", 
+    "rol":"ADMINISTRATIVO", 
+    "name":"JuanPonzetti"
+    }
+
+]
