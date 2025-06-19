@@ -1,6 +1,21 @@
 import React, { use } from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
+import {FavoritosContext} from "../contexts/FavoritosContext";
+
+const ProductoCard = ({ product }) => {
+  const { agregarFavorito, eliminarFavorito, favoritos } = useContext(FavoritosContext); //=> se usa usecontext para acceder a FavoritoContext.jsx<=
+
+  console.log("Favoritos:", favoritos);
+
+  const isFavorite = favoritos.some((fav) => {
+    console.log("Producto en favorito:", fav);
+    return fav.id === product.id;
+  });
+  const handleFavotiteClick = () => {
+    console.log('Producto ${product.id} - Accion: ${isFavorite ? "Eliminar" : "Agregar"}');
+    isFavorite ? eliminarFavorito(product) : agregarFavorito(product);
+
 import { FavoritosContext} from "../contexts/FavoritosContext";
 
 const ProductoCard = ({ product }) => {
@@ -34,6 +49,8 @@ const ProductoCard = ({ product }) => {
             width: "40%",
             height: "40%",
           }}
+          
+        > {favoritos.includes(product) ? "🤍" : "❤️"} </button>   
         > {isFavorito ? "❤️" : "🤍"} </button>
       </div>
 

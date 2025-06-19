@@ -1,4 +1,4 @@
-
+import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Favorito from './componentes/favorito';
@@ -10,12 +10,15 @@ import Error from './vistas/Error.jsx';
 import About from './componentes/About-us.jsx';
 import LoginHome from './componentes/LoginHome.jsx';
 import  ProductoCard from './componentes/ProductoCard.jsx';
+import { FavoritoProvider }  from './contexts/FavoritosContext';
 import {FavoritoProvider}  from './contexts/FavoritosContext';
 
 const App = () => {
 
   return (
     <>
+    
+    <FavoritoProvider>    //con FavoritoProvider funciona con conjunto a las otras funciones
     <FavoritoProvider>
       <div>
       <NavBar />
