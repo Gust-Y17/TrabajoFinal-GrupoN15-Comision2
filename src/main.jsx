@@ -16,6 +16,16 @@ createRoot(document.getElementById('root')).render(
           <FavoritoProvider>
             
           <App /> 
+import { FavoritoProvider } from './contexts/FavoritosContext.jsx';
+
+
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter> 
+      <AutorisaProvider>
+        <ProductosProvider>
+          <FavoritoProvider> 
+            <App />
           </FavoritoProvider>
         </ProductosProvider>
       </AutorisaProvider>

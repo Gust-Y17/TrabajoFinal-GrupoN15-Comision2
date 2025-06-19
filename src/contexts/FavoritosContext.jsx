@@ -3,6 +3,8 @@ import {createContext, useState } from "react";
 const FavoritosContext = createContext();
 
 const FavoritoProvider = ({ children }) => {
+const FavoritoProvider = ({children}) => {
+  
     const [favoritos, setFavoritos] = useState([]);
 
 

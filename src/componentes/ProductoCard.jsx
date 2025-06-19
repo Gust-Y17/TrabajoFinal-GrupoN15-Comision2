@@ -16,6 +16,20 @@ const ProductoCard = ({ product }) => {
     console.log('Producto ${product.id} - Accion: ${isFavorite ? "Eliminar" : "Agregar"}');
     isFavorite ? eliminarFavorito(product) : agregarFavorito(product);
 
+import { FavoritosContext} from "../contexts/FavoritosContext";
+
+const ProductoCard = ({ product }) => {
+  const { agregarFavorito, eliminarFavorito, favoritos } = useContext(FavoritosContext);
+
+  const isFavorito = favoritos.some((fav) => {
+  
+  console.log("Productos en Favoritos:", fav);
+    
+    return fav.id === product.id; //comparar las id de productos
+  });
+  const handleFavotiteClick = () => {
+    console.log('Producto ${product.id} - Accion: ${isFavorito ? "Eliminar" : "Agregar"}');
+    isFavorito ? eliminarFavorito(product.id) : agregarFavorito(product);
 };
 
   return (
@@ -35,7 +49,9 @@ const ProductoCard = ({ product }) => {
             width: "40%",
             height: "40%",
           }}
+          
         > {favoritos.includes(product) ? "🤍" : "❤️"} </button>   
+        > {isFavorito ? "❤️" : "🤍"} </button>
       </div>
 
       <div className=""> //las categorias

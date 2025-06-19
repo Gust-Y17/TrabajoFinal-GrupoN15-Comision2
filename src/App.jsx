@@ -6,17 +6,20 @@ import ProductosForm from './componentes/ProductosForm.jsx'
 import Home from './componentes/home'
 import NavBar from "./componentes/NavBar"; 
 import "./App.css";
- import Error from './vistas/Error.jsx';
+import Error from './vistas/Error.jsx';
 import About from './componentes/About-us.jsx';
 import LoginHome from './componentes/LoginHome.jsx';
 import  ProductoCard from './componentes/ProductoCard.jsx';
 import { FavoritoProvider }  from './contexts/FavoritosContext';
+import {FavoritoProvider}  from './contexts/FavoritosContext';
 
 const App = () => {
 
   return (
     <>
+    
     <FavoritoProvider>    //con FavoritoProvider funciona con conjunto a las otras funciones
+    <FavoritoProvider>
       <div>
       <NavBar />
       <Routes>
