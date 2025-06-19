@@ -23,6 +23,7 @@ const Footer = () => {
             rel="noopener noreferrer"
           >
             Facultad de Ingeniería - UNJu
+            <p>&copy;2025</p>
           </a>
         </div>
       </div>

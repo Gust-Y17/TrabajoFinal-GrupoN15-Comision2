@@ -5,12 +5,15 @@ import { useContext } from "react";
 import { ProductosContext } from "../contexts/Productos";
 import DetalleProductoModal from "../modales/DetallesProductoModal";
 import EditarProductoModal from "../modales/EditarProductoModal"
-//import useAutorisacion from "../hook/useAutorisacion";
+import useAutorisacion from "../hook/useAutorisacion";
 
 const Home = () => {
-     const {productosAPI, eliminarProd,editProducto}= useContext(ProductosContext)
+  const {productosAPI, eliminarProd,editProducto}= useContext(ProductosContext)
+  const { user, isAuthenticat } = useAutorisacion();
+  
+  const esAdmin = isAuthenticat && user?.rol === "ADMINISTRATIVO";
 
- const [EditProd,SetEditProd] = useState(null);
+  const [EditProd,SetEditProd] = useState(null);
    const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [showModal, setShowModal] = useState(false);
 
@@ -38,7 +41,7 @@ const handleVerDetalle = (prod) => {
 
        return (
     <Container className="contenido-con-espacio">
-      <h1 style={{ textAlign: "center", color: "lightgray" }}>PAGINA HOME</h1>
+      <h1 style={{ textAlign: "center", color: "lightgray" }}>FREE SHOP  </h1>
       {productosAPI.length === 0 ? (
         <h2 style={{ textAlign: "center", color: "lightgray" }}>NO HAY PRODUCTOS DISPONIBLES...</h2>) :
         (
@@ -71,12 +74,18 @@ const handleVerDetalle = (prod) => {
                     <Card.Title>Precio: ${prod.price}</Card.Title>
 
                     <div className="card-acciones">
-                      <Button size="sm" variant="warning" onClick={() => handleEditar(prod)}>
-                        Editar
-                      </Button>
-                      <Button size="sm" variant="danger" onClick={() => eliminarProd(prod.id)}>
-                        Eliminar
-                      </Button>
+
+                      {esAdmin && ( 
+                        <>
+                          <Button size="sm" variant="warning" onClick={() => handleEditar(prod)}>
+                            Editar
+                          </Button>
+                          <Button size="sm" variant="danger" onClick={() => eliminarProd(prod.id)}>
+                            Eliminar
+                          </Button>
+                        </>
+                      )}
+
                       <Button size="sm" variant="info" onClick={() => handleVerDetalle(prod)}>
                         Ver Detalles
                       </Button>
