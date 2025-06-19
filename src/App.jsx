@@ -10,6 +10,7 @@ import Error from './vistas/Error.jsx';
 import About from './componentes/About-us.jsx';
 import LoginHome from './componentes/LoginHome.jsx';
 import  ProductoCard from './componentes/ProductoCard.jsx';
+import Footer from './vistas/Footer.jsx';
 import { FavoritoProvider }  from './contexts/FavoritosContext';
 import {FavoritoProvider}  from './contexts/FavoritosContext';
 
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='*' element={<Error />} />
         <Route path="/About-Us" element={<About />} />
       </Routes>
+      <Footer/>
       </div>
       </FavoritoProvider>
      </>
