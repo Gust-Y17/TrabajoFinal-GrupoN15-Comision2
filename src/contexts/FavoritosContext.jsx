@@ -1,8 +1,8 @@
-import { Children, createContext, useState } from "react";
+import {createContext, useState } from "react";
 
-const favoritosContext = createContext();
+const FavoritosContext = createContext();
 
-const FavoritoProvider = ({Children}) => {
+const FavoritoProvider = ({ children }) => {
     const [favoritos, setFavoritos] = useState([]);
 
 
@@ -15,7 +15,7 @@ const eliminarFavorito = (id) => {
   };
 
 return(
-    <favoritosContext.Provider value={{favoritos, agregarFavorito, eliminarFavorito}}>{Children}</favoritosContext.Provider>
+    <FavoritosContext.Provider value={{favoritos, agregarFavorito, eliminarFavorito}}>{children}</FavoritosContext.Provider>
 );
 };
-export {favoritosContext, FavoritoProvider};
+export {FavoritosContext, FavoritoProvider};
