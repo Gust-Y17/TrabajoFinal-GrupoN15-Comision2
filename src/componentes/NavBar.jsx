@@ -25,6 +25,10 @@ const NavBar = () => {
             <Nav.Link as={Link} to="/favoritos">Favoritos</Nav.Link>
             <Nav.Link as={Link} to="/crear-producto">Crear Producto</Nav.Link>
             <Nav.Link as={Link} to="/About-US">Sobre Nosotros</Nav.Link>
+            <Nav.Link onClick={() => {
+              const footer = document.getElementById("contactanos")
+                  footer.scrollIntoView({behavior: "smooth"})
+            }}>Contactanos</Nav.Link>
           </Nav>
 
           {isAuthenticat  &&(

@@ -10,6 +10,7 @@ import "./App.css";
 import About from './componentes/About-us.jsx';
 import LoginHome from './componentes/LoginHome.jsx';
 import  ProductoCard from './componentes/ProductoCard.jsx';
+import Footer from './vistas/Footer.jsx';
 
 const App = () => {
 
@@ -25,6 +26,7 @@ const App = () => {
         <Route path='*' element={<Error />} />
         <Route path="/About-Us" element={<About />} />
       </Routes>
+      <Footer/>
      </>
   );
 };

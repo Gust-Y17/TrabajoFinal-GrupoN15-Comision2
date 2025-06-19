@@ -1,0 +1,51 @@
+.footer {
+    margin-top: 150px;
+    background-color: #1c1c1c;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 60px;
+  flex-wrap: wrap;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.footer-left,
+.footer-right {
+  flex: 1;
+  min-width: 300px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.contact-item img.icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 15px;
+  margin-top: 4px;
+}
+
+.contact-item p,
+.contact-item a {
+  color: #cccccc;
+  font-size: 15px;
+  margin: 2px 0;
+  text-decoration: none;
+}
+
+.footer-right h4 {
+  color: #ffffff;
+  font-size: 19px;
+  margin-bottom: 10px;
+}
+
+.footer-right p {
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
