@@ -1,16 +1,22 @@
 import { useContext } from "react"
-import { favoritosContext } from "../contexts/FavoritosContext";
+import { FavoritosContext } from "../contexts/FavoritosContext";
 const Favorito = () => {
-  const {favoritos} = useContext(favoritosContext);   //utiliza usecontext para acceder al  favoritoContxt y saber los productos favoritos
+  const {favoritos} = useContext(FavoritosContext);   //utiliza usecontext para acceder al  favoritoContxt y saber los productos favoritos
 
   return (
     <div style={{ padding: '20px' }}>
       <h1 style={{ textAlign: "center", color: "lightgray" }}>Favoritos</h1>
+
+      {favoritos.length > 0 ? (
+      
       <ul>
         {favoritos.map((product) => (                  //renderiza la lista de favoritos
-          <li key={product.id}>{product.title}</li>
+          <li key={product.id}>{product.title} (id: {product.id})</li>
         ))}
       </ul>
+      ) : (
+        <p>No tienes productos favoritos</p>
+      )}
     </div>
   );
 };
