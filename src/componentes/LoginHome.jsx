@@ -4,6 +4,9 @@ import useAutorisacion from "../hook/useAutorisacion";
 import { Container,Form,Button,Card,Alert } from "react-bootstrap";
 
 const LoginHome = () => {
+
+    console.log("LoginHome component is rendering"); // Debug
+
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [loginError, setLoginError] = useState("");
@@ -42,10 +45,12 @@ const LoginHome = () => {
         }
     };
 
+    console.log("About to return JSX"); // Debug
+
     return(
         <div
             fluid className="flex justify-content-center align-items-center"
-            style={{minHeight: "100vh", width: "100vw", backgroundImage:"url(/public/locoblanco.png)", backgroundPosition:"center", backgroundColor:"gray",display:"flex",justifyContent:"center", alignItems:"center", position:"fixed", top:0, left:0, right:0, bottom:0}}>
+            style={{minHeight: "100vh", width: "100vw", backgroundImage:"url(/public/locoblanco.png)", blackgroundSize:"cover", blackgroundposition:"center",backgroundPosition:"center", backgroundColor:"#333",display:"flex",justifyContent:"center", alignItems:"center", position:"fixed", top:0, left:0, right:0, bottom:0}}>
 
                 <Card style={{whidth:"100%", maxwidth: "400px"}} className="tamaño">
                     <Card.Body className="p-4">
