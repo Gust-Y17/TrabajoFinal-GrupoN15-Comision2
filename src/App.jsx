@@ -11,8 +11,7 @@ import About from './componentes/About-us.jsx';
 import LoginHome from './componentes/LoginHome.jsx';
 import  ProductoCard from './componentes/ProductoCard.jsx';
 import Footer from './vistas/Footer.jsx';
-import { FavoritoProvider }  from './contexts/FavoritosContext';
-import {FavoritoProvider}  from './contexts/FavoritosContext';
+ import { FavoritoProvider } from './contexts/FavoritosContext.jsx'; 
 
 const App = () => {
 
@@ -20,8 +19,7 @@ const App = () => {
     <>
     
     <FavoritoProvider>    //con FavoritoProvider funciona con conjunto a las otras funciones
-    <FavoritoProvider>
-      <div>
+       <div>
       <NavBar />
       <Routes>
         <Route path="/" element={<LoginHome />} />
