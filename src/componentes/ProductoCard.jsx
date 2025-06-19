@@ -1,11 +1,15 @@
-import React from "react";
+import React, { use } from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { FavoritosContext} from "../contexts/FavoritosContext";
 
-const ProductoCard = ({ product, isFavorite, onToggleFavorite }) => {
-  const handleFavotiteClick = (e) => {
-    e.preventDefault();
-    onToggleFavorite(product.id);
-  };
+const ProductoCard = ({ product }) => {
+  const { agregarFavorito, eliminarFavorito, favoritos } = useContext(FavoritosContext);
+  const handleFavotiteClick = () => {
+    if(favoritos.includes(product)){
+    eliminarFavorito(product.id);
+  }else{ agregarFavorito(product) } 
+};
 
   return (
     <div className="">
@@ -24,7 +28,7 @@ const ProductoCard = ({ product, isFavorite, onToggleFavorite }) => {
             width: "40%",
             height: "40%",
           }}
-        ></button>
+        > {favoritos.includes(product) ? "eliminar favorito" : "agregar favorito"} </button>
       </div>
 
       <div className=""> //las categorias
