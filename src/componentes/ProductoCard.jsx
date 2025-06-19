@@ -1,65 +1,42 @@
-import React, { use } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import {FavoritosContext} from "../contexts/FavoritosContext";
-
-const ProductoCard = ({ product }) => {
-  const { agregarFavorito, eliminarFavorito, favoritos } = useContext(FavoritosContext); //=> se usa usecontext para acceder a FavoritoContext.jsx<=
-
-  console.log("Favoritos:", favoritos);
-
-  const isFavorite = favoritos.some((fav) => {
-    console.log("Producto en favorito:", fav);
-    return fav.id === product.id;
-  });
-  const handleFavotiteClick = () => {
-    console.log('Producto ${product.id} - Accion: ${isFavorite ? "Eliminar" : "Agregar"}');
-    isFavorite ? eliminarFavorito(product) : agregarFavorito(product);
-
-import { FavoritosContext} from "../contexts/FavoritosContext";
+import { FavoritosContext } from "../contexts/FavoritosContext";
 
 const ProductoCard = ({ product }) => {
   const { agregarFavorito, eliminarFavorito, favoritos } = useContext(FavoritosContext);
 
-  const isFavorito = favoritos.some((fav) => {
-  
-  console.log("Productos en Favoritos:", fav);
-    
-    return fav.id === product.id; //comparar las id de productos
-  });
-  const handleFavotiteClick = () => {
-    console.log('Producto ${product.id} - Accion: ${isFavorito ? "Eliminar" : "Agregar"}');
-    isFavorito ? eliminarFavorito(product.id) : agregarFavorito(product);
-};
+  const isFavorite = favoritos.some((fav) => fav.id === product.id);
+
+  const handleFavoriteClick = () => {
+    isFavorite ? eliminarFavorito(product) : agregarFavorito(product);
+  };
 
   return (
-    <div className="">
-      <div className=""> //estilo a agregar
-        //imagen del producto
-        <img src={product.image} className="" alt={product.title} style={{}} />
+    <div className="card p-3 m-2" style={{ width: "18rem", position: "relative" }}>
+      {/* Imagen del producto */}
+      <img src={product.image} className="card-img-top" alt={product.title} style={{ height: "200px", objectFit: "contain" }} />
 
-        //boton de favorito
-        <button
-          className={`btn position-absolute top-0 end-0 m-2 ${
-            isFavorite ? "btn-danger" : "btn-outline-danger"
-          }`}
-          onClick={handleFavotiteClick}
-          style={{
-            borderRadius: "50%",
-            width: "40%",
-            height: "40%",
-          }}
-          
-        > {favoritos.includes(product) ? "🤍" : "❤️"} </button>   
-        > {isFavorito ? "❤️" : "🤍"} </button>
-      </div>
+      {/* Botón de favorito */}
+      <button
+        className={`btn position-absolute top-0 end-0 m-2 ${
+          isFavorite ? "btn-danger" : "btn-outline-danger"
+        }`}
+        onClick={handleFavoriteClick}
+        style={{
+          borderRadius: "50%",
+          width: "40px",
+          height: "40px",
+        }}
+      >
+        {isFavorite ? "❤️" : "🤍"}
+      </button>
 
-      <div className=""> //las categorias
-        <span className="badge bg-security mb-2 align-self-start">
-          {product.category}
-        </span>
+      {/* Información del producto */}
+      <div className="card-body d-flex flex-column">
+        {/* Categoría */}
+        <span className="badge bg-secondary mb-2 align-self-start">{product.category}</span>
 
-        //titulo de los productos
+        {/* Título */}
         <h5
           className="card-title"
           style={{
@@ -69,11 +46,13 @@ const ProductoCard = ({ product }) => {
             overflow: "hidden",
             display: "-webkit-box",
             WebkitLineClamp: 2,
+            WebkitBoxOrient: "vertical"
           }}
         >
           {product.title}
         </h5>
 
+        {/* Descripción */}
         <p
           className="card-text flex-grow-1"
           style={{
@@ -81,18 +60,19 @@ const ProductoCard = ({ product }) => {
             overflow: "hidden",
             display: "-webkit-box",
             WebkitLineClamp: 3,
+            WebkitBoxOrient: "vertical"
           }}
         >
           {product.description}
         </p>
 
-        //precio de producto
+        {/* Precio */}
         <div className="mb-3">
           <span className="h4 text-primary">${product.price}</span>
         </div>
 
-        //ver detalle del producto
-        <Link to={`/productos/${product.id}`} className="btn btn-primary">
+        {/* Ver detalles */}
+        <Link to={`/productos/${product.id}`} className="btn btn-primary mt-auto">
           Ver detalles
         </Link>
       </div>
