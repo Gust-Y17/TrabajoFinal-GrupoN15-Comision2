@@ -11,9 +11,9 @@ const ProductoCard = ({ product }) => {
   const isFavorito = favoritos.some((fav) => fav.id === product.id);
 
   const handleFavoriteClick = () => {
-
-    console.log('Producto ${Producto.id} - Acccion: ${isFavorito ? "Eliminar" : "Agregar"}');
-    isFavorito ? eliminarFavorito(product.id) : agregarFavorito(product);
+    if  (!product?.id) return;
+    console.log('Producto ${Product.id} - Acción: ${isFavorito ? "Eliminar" : "Agregar"}');
+    isFavorito ? eliminarFavorito(product) : agregarFavorito(product);
   };
 
   

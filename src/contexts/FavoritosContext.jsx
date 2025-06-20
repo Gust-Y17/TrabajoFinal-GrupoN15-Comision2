@@ -6,8 +6,13 @@ export const FavoritosContext = createContext();
 
 export const FavoritoProvider = ({children}) => {
     const [favoritos, setFavoritos] = useState(() =>{
+        try{
         const saved = localStorage.getItem("favoritos");
         return saved ? JSON.parse(saved) : [];
+    } catch (error){
+        console.error("Error al cargar favoritos:", error);
+        return []; // Devuelve un array vacío en caso de error
+    }
     });
 
     useEffect(() => {
@@ -21,7 +26,7 @@ const agregarFavorito = (product) => {
 };
 
 const eliminarFavorito = (target) => {
-  const id = typeof target === "target" ? target.id : target;
+  const id = typeof target === "object" ? target.id : target;
   setFavoritos(favoritos.filter(producto => producto.id !== id));
 };
 
