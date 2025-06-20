@@ -1,34 +1,44 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FavoritosContext } from "../contexts/FavoritosContext";
+import {FaHeart, FaRegHeart} from "react-icons/fa";
 
 const ProductoCard = ({ product }) => {
   const { agregarFavorito, eliminarFavorito, favoritos } = useContext(FavoritosContext);
+  console.log("Favoritos:", favoritos);
+  console.log("Producto:", product.id);
 
-  const isFavorite = favoritos.some((fav) => fav.id === product.id);
+  const isFavorito = favoritos.some((fav) => fav.id === product.id);
 
   const handleFavoriteClick = () => {
-    isFavorite ? eliminarFavorito(product) : agregarFavorito(product);
+
+    console.log('Producto ${Producto.id} - Acccion: ${isFavorito ? "Eliminar" : "Agregar"}');
+    isFavorito ? eliminarFavorito(product.id) : agregarFavorito(product);
   };
 
+  
   return (
-    <div className="card p-3 m-2" style={{ width: "18rem", position: "relative" }}>
+    <div className="card h-100 position-relative" style={{ width: "18rem", position: "relative" }}>
       {/* Imagen del producto */}
       <img src={product.image} className="card-img-top" alt={product.title} style={{ height: "200px", objectFit: "contain" }} />
 
       {/* Botón de favorito */}
       <button
         className={`btn position-absolute top-0 end-0 m-2 ${
-          isFavorite ? "btn-danger" : "btn-outline-danger"
+          isFavorito ? "btn-danger" :"text-secondary"
         }`}
         onClick={handleFavoriteClick}
         style={{
+          background: "rgba(255, 255, 255, 0.7)",
           borderRadius: "50%",
+          display: "flex",
           width: "40px",
           height: "40px",
+          alignItems: "center",
+          justifyContent: "center"
         }}
       >
-        {isFavorite ? "❤️" : "🤍"}
+        {isFavorito ? <FaHeart size={20} /> : <FaRegHeart size={20}/>}
       </button>
 
       {/* Información del producto */}
@@ -67,14 +77,16 @@ const ProductoCard = ({ product }) => {
         </p>
 
         {/* Precio */}
+        <div className="mt-auto">
         <div className="mb-3">
           <span className="h4 text-primary">${product.price}</span>
         </div>
 
         {/* Ver detalles */}
-        <Link to={`/productos/${product.id}`} className="btn btn-primary mt-auto">
+        <Link to={`/productos/${product.id}`} className="btn btn-primary rm-100">
           Ver detalles
         </Link>
+      </div>
       </div>
     </div>
   );
