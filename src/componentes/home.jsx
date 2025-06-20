@@ -5,6 +5,7 @@ import { FavoritosContext } from "../contexts/FavoritosContext";
 import DetalleProductoModal from "../modales/DetallesProductoModal";
 import EditarProductoModal from "../modales/EditarProductoModal";
 import useAutorisacion from "../hook/useAutorisacion";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const Home = () => {
   const { productosAPI, eliminarProd, editProducto } = useContext(ProductosContext);
@@ -15,6 +16,7 @@ const Home = () => {
   const [EditProd, SetEditProd] = useState(null);
   const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [showModal, setShowModal] = useState(false);
+
   const esUnicoProducto = productosAPI.length === 1;
 
   const handleVerDetalle = (prod) => {
