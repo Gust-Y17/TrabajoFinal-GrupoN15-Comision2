@@ -8,7 +8,7 @@ import useAutorisacion from "../hook/useAutorisacion";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const Home = () => {
-  const { productosAPI, eliminarProd, editProducto } = useContext(ProductosContext);
+  const { productosAPI, eliminarProd,editProducto } = useContext(ProductosContext);
   const { favoritos, agregarFavorito, eliminarFavorito } = useContext(FavoritosContext); 
   const { user, isAuthenticat } = useAutorisacion();
   
@@ -63,7 +63,7 @@ const Home = () => {
                       isFavorito ? "text-danger" : "text-secondary"
                     }`}
                     onClick={() => 
-                      isFavorito ? eliminarFavorito(prod.id) : agregarFavorito(prod)
+                      isFavorito ? eliminarFavorito(prod) : agregarFavorito(prod)
                     }
                     style={{
                       background: "rgba(255, 255, 255, 0.7)",
