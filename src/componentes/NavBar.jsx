@@ -1,10 +1,10 @@
-import { Navbar, Nav, Container, Button  } from "react-bootstrap";
+import { Navbar, Nav, Container, Button,Card  } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import useAutorisacion from "../hook/useAutorisacion";
 import "../estilos/NavBar.css";
 
 const NavBar = () => {
-  const { isAuthenticat, logout, user, login } = useAutorisacion();
+  const { isAuthenticat, logout, user} = useAutorisacion();
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -19,7 +19,11 @@ const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark" expand="lg" fixed="top" style={{minHeight: "56px", padding: "0.5rem 0"}} >
       <Container>
-        <Navbar.Brand as={Link} to="/home">TIENDA</Navbar.Brand>
+     
+        <Navbar.Brand as={Link} to="/home" >
+        <img src="../public/logo1.jpg" alt="logo" width={30} height={30} />
+            TIENDA
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
           <Nav className="me-auto">
@@ -38,10 +42,14 @@ const NavBar = () => {
               <Button variant="outline-light" onClick={handleLogin}>
                 Iniciar Sesión
               </Button>
+          
             ) : (
+              <div className="d-flex align-items-center text-white gap-2">
+                <span className="me-2">👤 {user?.name}</span>
               <Button variant="outline-light" onClick={handleLogout}>
                 Cerrar Sesión
               </Button>
+              </div>
             )}
           </Nav>
 

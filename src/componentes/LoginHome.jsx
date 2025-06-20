@@ -49,10 +49,10 @@ const LoginHome = () => {
 
     return(
         <div
-            fluid className="flex justify-content-center align-items-center"
-            style={{minHeight: "100vh", width: "100vw", backgroundImage:"url(/public/locoblanco.png)", blackgroundSize:"cover", blackgroundposition:"center",backgroundPosition:"center", backgroundColor:"#333",display:"flex",justifyContent:"center", alignItems:"center", position:"fixed", top:0, left:0, right:0, bottom:0}}>
+            fluid className="flex justify-content-fex-end align-items-center"
+            style={{minHeight: "100vh", width: "100vw", backgroundImage:"url(/public/locoblanco.png)", blackgroundSize:"cover", blackgroundposition:"center",backgroundPosition:"center", backgroundColor:"#333",display:"flex",justifyContent:"flex-end", alignItems:"center", position:"fixed", top:0, left:0, right:0, bottom:0,paddingRight: "5vw",}}>
 
-                <Card style={{whidth:"100%", maxwidth: "400px"}} className="tamaño">
+                <Card style={{whith:"100%", maxwidth: "400px"}} className="tamaño">
                     <Card.Body className="p-4">
                         <Card.Title as="h2" className="text-center mb-4">
                             Iniciar Sesion
