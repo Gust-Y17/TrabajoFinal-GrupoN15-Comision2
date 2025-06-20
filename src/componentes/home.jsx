@@ -1,18 +1,26 @@
 import { Row,Col,Card,Button, Container } from "react-bootstrap"
-import ItemProducto from "./ItemProducto"
 import { useState} from "react"
 import { useContext } from "react";
 import { ProductosContext } from "../contexts/Productos";
+import { FavoritosContext } from "../contexts/FavoritosContext";
 import DetalleProductoModal from "../modales/DetallesProductoModal";
 import EditarProductoModal from "../modales/EditarProductoModal"
-//import useAutorisacion from "../hook/useAutorisacion";
+import useAutorisacion from "../hook/useAutorisacion";
+import { FaHeart, FaRegHeart } from "react-icons/fa";
 
 const Home = () => {
-     const {productosAPI, eliminarProd,editProducto}= useContext(ProductosContext)
+  const {productosAPI, eliminarProd,editProducto}= useContext(ProductosContext);
 
- const [EditProd,SetEditProd] = useState(null);
+  const {favoritos, agregarFavorito, eliminarFavorito} = useContext(FavoritosContext);
+
+  const { user, isAuthenticat } = useAutorisacion();
+  
+  const esAdmin = isAuthenticat && user?.rol === "ADMINISTRATIVO";
+
+  const [EditProd,SetEditProd] = useState(null);
    const [productoSeleccionado, setProductoSeleccionado] = useState(null);
   const [showModal, setShowModal] = useState(false);
+const esUnicoProducto = productosAPI.length === 1;
 
 const handleVerDetalle = (prod) => {
     setProductoSeleccionado(prod);
@@ -27,23 +35,24 @@ const handleVerDetalle = (prod) => {
 
  const handleEditar = (prod) =>{
     SetEditProd(prod)
-  }
+  };
 
  const guardarEdicion = (prodEditado) => {
     editProducto(prodEditado);
     SetEditProd(null); 
- };
-
-  const esUnicoProducto = productosAPI.length === 1;
+  };
 
        return (
     <Container className="contenido-con-espacio">
-      <h1 style={{ textAlign: "center", color: "lightgray" }}>PAGINA HOME</h1>
+      <h1 style={{ textAlign: "center", color: "lightgray" }}>FREE SHOP  </h1>
       {productosAPI.length === 0 ? (
         <h2 style={{ textAlign: "center", color: "lightgray" }}>NO HAY PRODUCTOS DISPONIBLES...</h2>) :
         (
           <Row>
-            {productosAPI.map((prod) => (
+            {productosAPI.map((prod) => {
+              const isFavorito = favoritos.some(fav => fav.id === prod.id);
+            
+              return (
               <Col
                 key={prod.id}
                 xs={12}
@@ -54,16 +63,24 @@ const handleVerDetalle = (prod) => {
               >
 
                 <Card className="position-relative h-100 shadow-sm">
-                  {/* Aca esta el check en la ezquina de las cards para el favorito */}
-                  <div className="form-check position-absolute top-0 end-0 m-2">
-                    <input
-                      className="form-check-input"
-                      type="checkbox"
-                      id={`check-fav-${prod.id}`}
-                      onChange={() => console.log(`Favorito: ${prod.id}`)}
-                    />
-                    <label className="form-check-label" htmlFor={`check-fav-${prod.id}`}></label>
-                  </div>
+                  {/* --- BOTÓN DE FAVORITOS CON REACT ICONS --- */}
+                  <button className={'btn position-absolute top-0 end-0 m-2 ${isFavorito ? "text-danger" : "text-secondary"}'}
+                    onClick={() =>
+                      isFavorito ? eliminarFavorito(prod.id) : agregarFavorito(prod)
+                    }
+                    style={{
+                      background: "rgba(154, 5, 5, 0.7)",
+                      borderRadius: "50%",
+                      display: "flex",
+                      width: "40px",
+                      height: "40px",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      border: "none"
+                    }}
+                  >
+                    {isFavorito ? <FaHeart size={20}/> : <FaRegHeart size={20}/>}
+                    </button>
 
                   <Card.Img variant="top" src={prod.image} alt={prod.title} />
                   <Card.Body>
@@ -71,13 +88,19 @@ const handleVerDetalle = (prod) => {
                     <Card.Title>Precio: ${prod.price}</Card.Title>
 
                     <div className="card-acciones">
-                      <Button size="sm" variant="warning" onClick={() => handleEditar(prod)}>
-                        Editar
-                      </Button>
-                      <Button size="sm" variant="danger" onClick={() => eliminarProd(prod.id)}>
-                        Eliminar
-                      </Button>
-                      <Button size="sm" variant="info" onClick={() => handleVerDetalle(prod)}>
+
+                      {esAdmin && ( 
+                        <>
+                          <Button size="sm" variant="warning" onClick={() => handleEditar(prod)}>
+                            Editar
+                          </Button>
+                          <Button size="sm" variant="danger" onClick={() => eliminarProd(prod.id)} className="ms-2">
+                            Eliminar
+                          </Button>
+                        </>
+                      )}
+
+                      <Button size="sm" variant="info" onClick={() => handleVerDetalle(prod)} className={esAdmin ? "mt-2" : ""}>
                         Ver Detalles
                       </Button>
                     </div>
@@ -85,7 +108,8 @@ const handleVerDetalle = (prod) => {
                 </Card>
 
               </Col>
-            ))}
+            );
+          })}
           </Row>
         )}
 
