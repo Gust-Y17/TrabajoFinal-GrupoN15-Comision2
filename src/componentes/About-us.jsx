@@ -12,7 +12,6 @@ const About = () => {
                         <Card.Img variant="top" src="../public/estudiante.png" />
                        <Card.Title>URIEL ZAMBRANO</Card.Title>
                        <Card.Link href="https://github.com/Zamu-ai">GIT: Zamu-ai</Card.Link>
-                       <Card.Subtitle>Correo:uriel.b.zambrano@gmail.com</Card.Subtitle>
                </Card>
            </Col>
             <Col md={3}>
@@ -20,7 +19,6 @@ const About = () => {
                      <Card.Img variant="top" src="../public/estudiante.png" />
                        <Card.Title>FELIPE QUIROGA </Card.Title>
                        <Card.Link href="https://github.com/ElFelixxx">GIT: FelixxxDogg</Card.Link>
-                       <Card.Subtitle>Correo:leandroquiroga669@gmail.com</Card.Subtitle>
                 </Card> 
              </Col>
             <Col md={3}>
@@ -28,7 +26,6 @@ const About = () => {
                          <Card.Img variant="top" src="../public/estudiante.png" />
                        <Card.Title>GUSTAVO GRABIEL</Card.Title>
                        <Card.Link href="https://github.com/Gust-Y17">GIT: Gust-Y17</Card.Link>
-                       <Card.Subtitle>Correo:gg1904105@gmail.com</Card.Subtitle>
                </Card>
            </Col>
            <Col md={3}>
@@ -36,7 +33,6 @@ const About = () => {
                          <Card.Img variant="top" src="../public/estudiante.png" />
                        <Card.Title>JUAN PONZETTI</Card.Title>
                        <Card.Link href="https://github.com/JuanPoNZEtti">GIT: JuanPoNZEtti </Card.Link>
-                       <Card.Subtitle>CORREO: juanponzetti5@gmail.com </Card.Subtitle>
                </Card>
            </Col>
            

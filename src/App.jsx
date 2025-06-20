@@ -6,18 +6,20 @@ import ProductosForm from './componentes/ProductosForm.jsx'
 import Home from './componentes/home'
 import NavBar from "./componentes/NavBar"; 
 import "./App.css";
- import Error from './vistas/Error.jsx';
+import Error from './vistas/Error.jsx';
 import About from './componentes/About-us.jsx';
 import LoginHome from './componentes/LoginHome.jsx';
 import  ProductoCard from './componentes/ProductoCard.jsx';
-import { FavoritoProvider }  from './contexts/FavoritosContext';
+import Footer from './vistas/Footer.jsx';
+ import { FavoritoProvider } from './contexts/FavoritosContext.jsx'; 
 
 const App = () => {
 
   return (
     <>
+    
     <FavoritoProvider>    //con FavoritoProvider funciona con conjunto a las otras funciones
-      <div>
+       <div>
       <NavBar />
       <Routes>
         <Route path="/" element={<LoginHome />} />
@@ -28,6 +30,7 @@ const App = () => {
         <Route path='*' element={<Error />} />
         <Route path="/About-Us" element={<About />} />
       </Routes>
+      <Footer/>
       </div>
       </FavoritoProvider>
      </>

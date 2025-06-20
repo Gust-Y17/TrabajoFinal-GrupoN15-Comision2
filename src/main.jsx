@@ -10,12 +10,11 @@ import { FavoritoProvider } from './contexts/FavoritosContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>  
+    <BrowserRouter> 
       <AutorisaProvider>
         <ProductosProvider>
-          <FavoritoProvider>
-            
-          <App /> 
+          <FavoritoProvider> 
+            <App />
           </FavoritoProvider>
         </ProductosProvider>
       </AutorisaProvider>
