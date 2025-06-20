@@ -1,7 +1,6 @@
 import {createContext, useState } from "react";
 import { useEffect } from "react";
-import { set } from "react-hook-form";
-
+ 
 export const FavoritosContext = createContext();
 
 export const FavoritoProvider = ({children}) => {

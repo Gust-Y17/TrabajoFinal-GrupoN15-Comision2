@@ -59,22 +59,13 @@ const Home = () => {
                 <Card className="position-relative h-100 shadow-sm">
                   {/* --- BOTÓN DE FAVORITOS CON REACT ICONS --- */}
                   <button
+                    id="botonhome"
                     className={`btn position-absolute top-0 end-0 m-2 ${
                       isFavorito ? "text-danger" : "text-secondary"
                     }`}
                     onClick={() => 
                       isFavorito ? eliminarFavorito(prod) : agregarFavorito(prod)
-                    }
-                    style={{
-                      background: "rgba(255, 255, 255, 0.7)",
-                      borderRadius: "50%",
-                      width: "40px",
-                      height: "40px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      border: "none"
-                    }}
+                    } 
                   >
                     {isFavorito ? <FaHeart size={20} /> : <FaRegHeart size={20} />}
                   </button>

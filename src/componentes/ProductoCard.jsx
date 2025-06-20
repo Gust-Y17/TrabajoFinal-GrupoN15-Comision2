@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FavoritosContext } from "../contexts/FavoritosContext";
 import {FaHeart, FaRegHeart} from "react-icons/fa";
-
+import "../estilos/ProductoCard.css"
 const ProductoCard = ({ product }) => {
   const { agregarFavorito, eliminarFavorito, favoritos } = useContext(FavoritosContext);
   console.log("Favoritos:", favoritos);
@@ -28,15 +28,7 @@ const ProductoCard = ({ product }) => {
           isFavorito ? "btn-danger" :"text-secondary"
         }`}
         onClick={handleFavoriteClick}
-        style={{
-          background: "rgba(255, 255, 255, 0.7)",
-          borderRadius: "50%",
-          display: "flex",
-          width: "40px",
-          height: "40px",
-          alignItems: "center",
-          justifyContent: "center"
-        }}
+         
       >
         {isFavorito ? <FaHeart size={20} /> : <FaRegHeart size={20}/>}
       </button>
@@ -49,29 +41,14 @@ const ProductoCard = ({ product }) => {
         {/* Título */}
         <h5
           className="card-title"
-          style={{
-            fontSize: "1.1rem",
-            lineHeight: "1.3",
-            height: "3.6rem",
-            overflow: "hidden",
-            display: "-webkit-box",
-            WebkitLineClamp: 2,
-            WebkitBoxOrient: "vertical"
-          }}
         >
           {product.title}
         </h5>
 
         {/* Descripción */}
         <p
+          id="description"
           className="card-text flex-grow-1"
-          style={{
-            fontSize: "0.9rem",
-            overflow: "hidden",
-            display: "-webkit-box",
-            WebkitLineClamp: 3,
-            WebkitBoxOrient: "vertical"
-          }}
         >
           {product.description}
         </p>
