@@ -1,27 +1,14 @@
 [
     {"id":"admin1", 
-    "username":"gustavoyev", 
-    "password":"gus1", 
+    "username":"admin01", 
+    "password":"ad123", 
     "rol":"ADMINISTRATIVO", 
-    "name":"GustavoYevara"
+    "name":"administrador"
     },
     {"id":"usuario22", 
-    "username":"urielzamb", 
-    "password":"uriel2", 
+    "username":"user02", 
+    "password":"us456", 
     "rol":"USUARIOCOMUN", 
-    "name":"UrielZambrano"
-    },
-    {"id":"usuario24", 
-    "username":"felixQ", 
-    "password":"felix3", 
-    "rol":"USUARIOCOMUN",
-    "name":"FelipeQuir"
-    },
-    {"id":"admin11", 
-    "username":"juanponze", 
-    "password":"juan4", 
-    "rol":"ADMINISTRATIVO", 
-    "name":"JuanPonzetti"
-    }
-
+    "name":"usuario"
+    } 
 ]
