@@ -66,3 +66,21 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.itemcontraseña{
+  min-height: 100vh;
+  width: 100vw;
+  background-image: url("/public/locoblanco.png"); 
+  background-repeat: repeat;          
+  background-position: center;
+  background-color: #353535;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding-right: 5vw;
+}

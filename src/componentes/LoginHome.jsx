@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAutorisacion from "../hook/useAutorisacion";
-import { Container,Form,Button,Card,Alert } from "react-bootstrap";
+import {Form,Button,Card,Alert } from "react-bootstrap";
 
 const LoginHome = () => {
 
-    console.log("LoginHome component is rendering"); // Debug
+    console.log("LoginHome component is rendering");
 
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -45,53 +45,51 @@ const LoginHome = () => {
         }
     };
 
-    console.log("About to return JSX"); // Debug
+    console.log("About to return JSX"); 
 
     return(
-        <div
-            fluid className="flex justify-content-fex-end align-items-center"
-            style={{minHeight: "100vh", width: "100vw", backgroundImage:"url(/public/locoblanco.png)", blackgroundSize:"cover", blackgroundposition:"center",backgroundPosition:"center", backgroundColor:"#333",display:"flex",justifyContent:"flex-end", alignItems:"center", position:"fixed", top:0, left:0, right:0, bottom:0,paddingRight: "5vw",}}>
+        <div fluid className="itemcontraseña flex justify-content-fex-end align-items-center">
 
-                <Card style={{whith:"100%", maxwidth: "400px"}} className="tamaño">
-                    <Card.Body className="p-4">
-                        <Card.Title as="h2" className="text-center mb-4">
-                            Iniciar Sesion
-                        </Card.Title>
-                        
-                        <Form onSubmit={handleSubmit}>
-                            <Form.Group className="mb-3" controlId="formBasicUsername">
-                                <Form.Label>Usuario</Form.Label>
-                                <Form.Control
-                                    type="text"
-                                    placeholder="ingresa tu usuario"
-                                    value={username} onChange={(e) => setUsername(e.target.value)}
-                                    required/>
-                            </Form.Group>
+            <Card className="tamaño">
+                <Card.Body className="p-4">
+                    <Card.Title as="h2" className="text-center mb-4">
+                        Iniciar Sesion
+                    </Card.Title>
+                    
+                    <Form onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3" controlId="formBasicUsername">
+                            <Form.Label>Usuario</Form.Label>
+                            <Form.Control
+                                type="text"
+                                placeholder="ingresa tu usuario"
+                                value={username} onChange={(e) => setUsername(e.target.value)}
+                                required/>
+                        </Form.Group>
 
-                            <Form.Group className="mb-3" controlId="formBasicPassword">
-                                <Form.Label>Contraseña</Form.Label>
-                                <Form.Control
-                                    type="Password"
-                                    placeholder="Contraseña"
-                                    value={password} onChange={(e) => setPassword(e.target.value)}
-                                    required/>
-                            </Form.Group>
+                        <Form.Group className="mb-3" controlId="formBasicPassword">
+                            <Form.Label>Contraseña</Form.Label>
+                            <Form.Control
+                                type="Password"
+                                placeholder="Contraseña"
+                                value={password} onChange={(e) => setPassword(e.target.value)}
+                                required/>
+                        </Form.Group>
 
-                            {loginError && (
-                                <Alert variant="danger" className="mt-3">
-                                    {loginError}
-                                </Alert>
-                            )}
+                        {loginError && (
+                            <Alert variant="danger" className="mt-3">
+                                {loginError}
+                            </Alert>
+                        )}
 
-                            <Button variant="primary" type="submit" className="mt-3">
-                                Iniciar Sesión
-                            </Button>
-                        </Form>
-                    </Card.Body>
+                        <Button variant="primary" type="submit" className="mt-3">
+                            Iniciar Sesión
+                        </Button>
+                    </Form>
+                </Card.Body>
 
-                </Card>
+            </Card>
 
-            </div>
+        </div>
     )
 
 }

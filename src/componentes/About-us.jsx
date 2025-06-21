@@ -1,8 +1,8 @@
 import { Card,Row,Col,Container} from "react-bootstrap"
 import "../estilos/About-US.css" 
+
 const About = () => {
     return (
-
         <Container>
             <h1>INTEGRANTES GRUPO 15</h1>
     
@@ -35,10 +35,8 @@ const About = () => {
                        <Card.Link href="https://github.com/JuanPoNZEtti">GIT: JuanPoNZEtti </Card.Link>
                </Card>
            </Col>
-           
-       </Row>
+        </Row>
         </Container>
-       
     )
 }
 export default About
