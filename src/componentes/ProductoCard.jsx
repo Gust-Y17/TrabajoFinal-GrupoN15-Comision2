@@ -1,14 +1,15 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Button } from "react-bootstrap";
 import { FavoritosContext } from "../contexts/FavoritosContext";
 import {FaHeart, FaRegHeart} from "react-icons/fa";
+import DetalleProductoModal from "../modales/DetallesProductoModal";
 import "../estilos/ProductoCard.css"
 const ProductoCard = ({ product }) => {
   const { agregarFavorito, eliminarFavorito, favoritos } = useContext(FavoritosContext);
-  console.log("Favoritos:", favoritos);
-  console.log("Producto:", product.id);
+  const [showModal,setShowModal] = useState(false);
+    const [productoSeleccionado, setProductoSeleccionado] = useState(null);
 
-  const isFavorito = favoritos.some((fav) => fav.id === product.id);
+   const isFavorito = favoritos.some((fav) => fav.id === product.id);
 
   const handleFavoriteClick = () => {
     if  (!product?.id) return;
@@ -16,6 +17,19 @@ const ProductoCard = ({ product }) => {
     isFavorito ? eliminarFavorito(product) : agregarFavorito(product);
   };
 
+    const handleVerDetalle = (prod) => {
+    setProductoSeleccionado(prod);
+    setShowModal(true);
+  };
+
+
+    const handleCerrarModal = () => {
+    setShowModal(false);
+        setProductoSeleccionado(null);
+
+   };
+
+  
   
   return (
     <div className="card h-100 position-relative" style={{ width: "18rem", position: "relative" }}>
@@ -59,10 +73,19 @@ const ProductoCard = ({ product }) => {
           <span className="h4 text-primary">${product.price}</span>
         </div>
 
+        <Button 
+             size="sm" 
+              variant="info"
+             onClick={() => handleVerDetalle(product)}
+        >
+             Ver Detalles
+        </Button>
         {/* Ver detalles */}
-        <Link to={`/productos/${product.id}`} className="btn btn-primary rm-100">
-          Ver detalles
-        </Link>
+        <DetalleProductoModal
+        show={showModal}
+        handleClose={handleCerrarModal}
+        producto={productoSeleccionado}
+      />
       </div>
       </div>
     </div>
