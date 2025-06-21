@@ -6,7 +6,7 @@ import DetalleProductoModal from "../modales/DetallesProductoModal";
 import EditarProductoModal from "../modales/EditarProductoModal";
 import useAutorisacion from "../hook/useAutorisacion";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
-
+ 
 const Home = () => {
   const { productosAPI, eliminarProd,editProducto } = useContext(ProductosContext);
   const { favoritos, agregarFavorito, eliminarFavorito } = useContext(FavoritosContext); 
@@ -59,8 +59,7 @@ const Home = () => {
                 <Card className="position-relative h-100 shadow-sm">
                   {/* --- BOTÓN DE FAVORITOS CON REACT ICONS --- */}
                   <button
-                    id="botonhome"
-                    className={`btn position-absolute top-0 end-0 m-2 ${
+                     className={`btn position-absolute top-0 end-0 m-2 ${
                       isFavorito ? "text-danger" : "text-secondary"
                     }`}
                     onClick={() => 
@@ -79,28 +78,23 @@ const Home = () => {
                       {esAdmin && ( 
                         <>
                           <Button 
-                            size="sm" 
-                            variant="warning" 
+                              variant="warning " 
                             onClick={() => handleEditar(prod)}
                           >
                             Editar
                           </Button>
                           <Button 
-                            size="sm" 
-                            variant="danger" 
+                              variant="danger" 
                             onClick={() => eliminarProd(prod.id)}
-                            className="ms-2"
-                          >
+                           >
                             Eliminar
                           </Button>
                         </>
                       )}
                       <Button 
-                        size="sm" 
-                        variant="info" 
+                          variant="info" 
                         onClick={() => handleVerDetalle(prod)}
-                        className={esAdmin ? "mt-2" : ""}
-                      >
+                       >
                         Ver Detalles
                       </Button>
                     </div>
