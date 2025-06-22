@@ -7,13 +7,26 @@
             -webkit-line-clamp: 2;
 }
 
-#description{
+.card-text{
               
             font-size: 0.9rem;
             overflow: hidden;
             display: -webkit-box;
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
-        
+}
 
+.card-img-top{
+     height: 200px;
+     object-fit: contain; 
+}
+ 
+.badge{
+    background-color:darkslategrey;
+     margin-bottom:2;
+     align-self:start;
+}
+
+.price{
+    margin-bottom: 15px;
 }
