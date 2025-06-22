@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 import { FavoritosContext } from "../contexts/FavoritosContext";
 import {FaHeart, FaRegHeart} from "react-icons/fa";
 import DetalleProductoModal from "../modales/DetallesProductoModal";
@@ -32,50 +32,39 @@ const ProductoCard = ({ product }) => {
   
   
   return (
-    <div className="card h-100 position-relative" style={{ width: "18rem", position: "relative" }}>
+    <Card >
       {/* Imagen del producto */}
-      <img src={product.image} className="card-img-top" alt={product.title} style={{ height: "200px", objectFit: "contain" }} />
+      <img src={product.image} className="card-img-top" alt={product.title}/>
 
       {/* Botón de favorito */}
       <button
         className={`btn position-absolute top-0 end-0 m-2 ${
           isFavorito ? "btn-danger" :"text-secondary"
         }`}
-        onClick={handleFavoriteClick}
-         
+        onClick={handleFavoriteClick} 
       >
         {isFavorito ? <FaHeart size={20} /> : <FaRegHeart size={20}/>}
       </button>
 
       {/* Información del producto */}
-      <div className="card-body d-flex flex-column">
+      <Card.Body>
         {/* Categoría */}
-        <span className="badge bg-secondary mb-2 align-self-start">{product.category}</span>
+        <Card.Subtitle className="badge">{product.category}</Card.Subtitle >
 
         {/* Título */}
-        <h5
-          className="card-title"
-        >
-          {product.title}
-        </h5>
+        <Card.Title className="card-title"> {product.title} </Card.Title>
 
         {/* Descripción */}
-        <p
-          id="description"
-          className="card-text flex-grow-1"
-        >
-          {product.description}
-        </p>
+        <p className="card-text" >{product.description}</p>
 
-        {/* Precio */}
         <div className="mt-auto">
-        <div className="mb-3">
+        {/* Precio */}
+        <div className="price">
           <span className="h4 text-primary">${product.price}</span>
         </div>
 
         <Button 
-             size="sm" 
-              variant="info"
+               variant="info"
              onClick={() => handleVerDetalle(product)}
         >
              Ver Detalles
@@ -87,8 +76,8 @@ const ProductoCard = ({ product }) => {
         producto={productoSeleccionado}
       />
       </div>
-      </div>
-    </div>
+      </Card.Body>
+    </Card>
   );
 };
 
