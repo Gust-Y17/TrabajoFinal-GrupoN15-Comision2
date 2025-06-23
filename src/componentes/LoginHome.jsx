@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAutorisacion from "../hook/useAutorisacion";
-import { Form, Button, Card, Alert } from "react-bootstrap";
+import { Form, Button, Card, Alert, Modal } from "react-bootstrap";
 
 const LoginHome = () => {
 
@@ -49,13 +49,13 @@ const LoginHome = () => {
 	console.log("About to return JSX");
 
 	return (
-		<div fluid className="itemcontraseña flex justify-content-fex-end align-items-center">
+		<div fluid className="itemcontraseña">
 
 			<Card className="tamaño">
 				<Card.Body className="p-4">
-					<Card.Title as="h2" className="text-center mb-4">
+					<Modal.Title as="h2" className="text-center mb-4">
 						Iniciar Sesion
-					</Card.Title>
+					</Modal.Title>
 
 					<Form onSubmit={handleSubmit}>
 						<Form.Group className="mb-3" controlId="formBasicUsername">

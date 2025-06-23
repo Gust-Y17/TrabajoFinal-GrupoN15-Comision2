@@ -24,10 +24,12 @@ a:hover {
 
 body {
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
+  background-image: url('/public/fondo1.jpg');
+  background-size: cover;        /* Ajusta la imagen para que cubra todo */
+  background-position: center;   /* Centra la imagen */
+  background-repeat: no-repeat;  /* No se repite */
+  height: auto;                 
 }
 
 h1 {

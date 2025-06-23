@@ -17,7 +17,7 @@ const NavBar = () => {
   };
 
   return (
-    <Navbar bg="dark" variant="dark" expand="lg" fixed="top" style={{minHeight: "56px", padding: "0.5rem 0"}} >
+    <Navbar bg="dark" variant="dark" expand="lg" fixed="top" className="nav"  >
       <Container>
      
         <Navbar.Brand as={Link} to="/home" >

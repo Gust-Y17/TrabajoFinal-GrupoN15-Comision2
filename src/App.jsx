@@ -18,20 +18,21 @@ const App = () => {
     <>
 
       <FavoritoProvider>    //con FavoritoProvider funciona con conjunto a las otras funciones
-        <div>
+        <div className='fondo'>
           <NavBar />
           <Routes>
             <Route path="/" element={<LoginHome />} />
             <Route path="/About-Us" element={<About />} />
             <Route path='*' element={<Error />} />
-            <Route element={<RutaPrivada />}>
               <Route path="/home" element={<Home />} />
               <Route path="/favoritos" element={<Favorito />} />
+              <Route element={<RutaPrivada />}>
               <Route path="/crear-producto" element={<ProductosForm />} />
             </Route>
           </Routes>
-          <Footer />
+            <Footer />
         </div>
+        
       </FavoritoProvider>
     </>
   );
