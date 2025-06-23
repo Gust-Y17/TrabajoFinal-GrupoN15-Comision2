@@ -25,10 +25,10 @@ a:hover {
 body {
   margin: 0;
   padding: 0;
-  background-image: url('/public/fondo1.jpg');
-  background-size: cover;        /* Ajusta la imagen para que cubra todo */
-  background-position: center;   /* Centra la imagen */
-  background-repeat: no-repeat;  /* No se repite */
+  background-image: url('/public/fondo3.jpg');
+  background-size: cover;       
+  background-position: center;  
+  background-repeat: no-repeat; 
   height: auto;                 
 }
 
