@@ -99,7 +99,7 @@ function ProductosForm({ product = null }) {
               value={formData.title}
               onChange={handleChange}
               placeholder="Nombre del producto"
-              pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+              pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s\-_\.]+$"
               required
             />
             <div className="invalid-feedback">

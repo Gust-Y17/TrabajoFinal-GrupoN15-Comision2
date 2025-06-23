@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { FavoritosContext } from "../contexts/FavoritosContext";
 import ProductoCard from "./ProductoCard";
 import { Container, Row, Col } from "react-bootstrap";
+import "../estilos/favorito.css"
 
 const Favorito = () => {
   const { favoritos } = useContext(FavoritosContext);
 
   return (
     <Container className="contenido-con-espacio">
-      <h1 style={{ textAlign: "center", color: "lightgray" }}>Favoritos</h1>
+      <h1 className="fav">Favoritos</h1>
 
       {favoritos && favoritos.length > 0 ? (
         <Row className="justify-content-center">
@@ -19,7 +20,7 @@ const Favorito = () => {
           ))}
         </Row>
       ) : (
-        <p style={{ textAlign: "center" }}>No tienes productos favoritos</p>
+        <p className="fav">No tienes productos favoritos</p>
       )}
     </Container>
   );

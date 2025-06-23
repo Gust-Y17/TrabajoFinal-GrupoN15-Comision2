@@ -57,7 +57,7 @@ const Home = () => {
 
   return (
     <Container className="py-4">
-      <h1 className="text-center text-secondary mb-4">FREE SHOP</h1>
+      <h1 className="text-center text-white mb-4">FREE SHOP</h1>
 
       {productosAPI.length === 0 ? (
         <h4 className="text-center text-muted">NO HAY PRODUCTOS DISPONIBLES...</h4>
