@@ -1,19 +1,13 @@
 import { Button } from 'react-bootstrap';
-import "../estilos/FormularioProducto.css"
+import "../estilos/FormularioProducto.css";
 
-
-function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
-  
-  
-  
+function FormularioProducto({ formData, onChange, onSubmit, onCancel, modo }) {
   return (
-    <div className="formulario-pagina">
-      <div className="formulario-contenedor">
-         
-
-        <form onSubmit={onSubmit} className='needs-validation' noValidate>
-         <input
-            className="form-control"
+    <div className="formulario-pagina d-flex justify-content-center align-items-center py-4">
+      <div className="formulario-contenedor w-100" style={{ maxWidth: "500px" }}>
+        <form onSubmit={onSubmit} className="needs-validation text-center" noValidate>
+          <input
+            className="form-control mb-3"
             type="text"
             name="title"
             value={formData.title}
@@ -22,33 +16,30 @@ function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
             pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
             required
           />
-          <div className='invalid-feedback'>
+          <div className="invalid-feedback mb-2">
             introducir solo letras. Este campo es obligatorio
           </div>
- 
-           
+
           <input
-            className="form-control"
+            className="form-control mb-3"
             type="number"
             name="price"
             value={formData.price}
             onChange={onChange}
             placeholder="precio"
             min="0"
-             step="0.01"
+            step="0.01"
             required
           />
-          <div className='invalid-feedback'>
+          <div className="invalid-feedback mb-2">
             introducir solo numeros mayores a 0. Este campo es obligatorio
           </div>
- 
-        
-           <select
-            className="form-control"
+
+          <select
+            className="form-control mb-3"
             name="category"
             value={formData.category}
             onChange={onChange}
-            placeholder="categoria"
             required
           >
             <option value="">Seleccionar categoría</option>
@@ -57,28 +48,27 @@ function FormularioProducto({ formData, onChange, onSubmit, onCancel,modo }) {
             <option value="men's clothing">Men's clothing</option>
             <option value="women's clothing">Women's clothing</option>
           </select>
-        
 
-        
-           <textarea
-             className="form-control"
+          <textarea
+            className="form-control mb-3"
             name="description"
             value={formData.description}
             onChange={onChange}
             placeholder="descripcion del producto"
-             pattern="^(?=.*[A-Za-zÁÉÍÓÚáéíóúÑñ])(?=.*\d)[A-Za-zÁÉÍÓÚáéíóúÑñ\d\s]+$"
+            pattern="^(?=.*[A-Za-zÁÉÍÓÚáéíóúÑñ])(?=.*\d)[A-Za-zÁÉÍÓÚáéíóúÑñ\d\s]+$"
             rows="3"
             required
           />
-        
-           <input
-            className="form-control"
+
+          <input
+            className="form-control mb-3"
             type="file"
             name="image"
             accept="image/*"
             onChange={onChange}
           />
-          <div className="d-flex gap-2">
+
+          <div className="d-flex justify-content-center gap-2 mt-3">
             <Button variant="success" type="submit">
               {modo === 'editar' ? 'Actualizar' : 'Crear'}
             </Button>

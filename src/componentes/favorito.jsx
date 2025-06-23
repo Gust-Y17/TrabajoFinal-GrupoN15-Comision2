@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { FavoritosContext } from "../contexts/FavoritosContext";
-import ProductoCard from "./ProductoCard"; 
+import ProductoCard from "./ProductoCard";
 import { Container, Row, Col } from "react-bootstrap";
 
 const Favorito = () => {

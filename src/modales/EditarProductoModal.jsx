@@ -4,13 +4,13 @@ import { useContext } from "react";
 import { ProductosContext } from "../contexts/Productos";
 
 const EditarProductoModal = ({ show, handleClose, producto, onGuardar }) => {
-  const { productosAPI} = useContext(ProductosContext)
+  const { productosAPI } = useContext(ProductosContext)
   if (!producto) return null;
-const handleGuardarValidado = (prodEditado) => {
-  onGuardar(prodEditado)
-  handleClose();
+  const handleGuardarValidado = (prodEditado) => {
+    onGuardar(prodEditado)
+    handleClose();
   }
- 
+
 
   return (
     <Modal show={show} onHide={handleClose} backdrop="static" centered size="lg">
