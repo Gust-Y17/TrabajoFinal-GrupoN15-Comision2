@@ -1,18 +1,18 @@
 import { Button, Card, Container } from 'react-bootstrap';
 import "../estilos/ProductosForm.css";
 import { useState } from 'react'
- import { useContext } from 'react'
+import { useContext } from 'react'
 import { ProductosContext } from '../contexts/Productos.jsx';
 
-function ProductosForm ({product = null}) {
-  const {productosAPI,agregar}= useContext(ProductosContext);
+function ProductosForm({ product = null }) {
+  const { productosAPI, agregar } = useContext(ProductosContext);
 
-  const isDuplicate = (field,value) => { //field: campo del producto a verificar "titulo" "desecription" value: valor a comparar
+  const isDuplicate = (field, value) => { //field: campo del producto a verificar "titulo" "desecription" value: valor a comparar
     return productosAPI.some(product =>  //verifica si al menos un elemento del array cumple con la condicion
       product[field].toLowerCase() === value.toLowerCase() //accede al campo especifico produc[field] lo convierte en minuscula y compara el value recibido tmb a minusculas
     );
   };
-   const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState({
     title: '',
     price: '',
     description: '',
@@ -23,17 +23,17 @@ function ProductosForm ({product = null}) {
   const handleChange = (e) => {
     const { name, value, files } = e.target;
 
-if (name === 'image') {
+    if (name === 'image') {
       if (files && files.length > 0) {
         const file = files[0];
         const validTypes = ['image/png', 'image/jpeg', 'image/jpg'];
-        
+
         if (!validTypes.includes(file.type)) { //verifica si el tipo "file.type" no está en el array validtypes que contiene las img
           alert('Solo se permiten archivos PNG, JPEG, JPG');// muestra mensaje
           e.target.value = ''; // limpia el valor del input y no permanezca seleccionado
           return; //sale de la funcion evita que continue el procesamiento del formulario
         }
-        
+
         const imageURL = URL.createObjectURL(file);
         setFormData(prev => ({
           ...prev,
@@ -47,7 +47,7 @@ if (name === 'image') {
       }));
     }
   };
-    const resetForm = () => {
+  const resetForm = () => {
     setFormData({
       title: '',
       price: '',
@@ -66,13 +66,13 @@ if (name === 'image') {
       return;
     }
 
-    if(isDuplicate('title',formData.title)){ //llama a la funcion isDuplicate paera verificar si existe un prod con mismo titulo
+    if (isDuplicate('title', formData.title)) { //llama a la funcion isDuplicate paera verificar si existe un prod con mismo titulo
       alert('ya existe un producto con ese nombre');//si existe muestra mensaje
-    return;//y sale de la funcion evitando envio del formulario
+      return;//y sale de la funcion evitando envio del formulario
     }
-    if(isDuplicate('description', formData.description)){
+    if (isDuplicate('description', formData.description)) {
       alert('ya existe un producto con esa descripción')
-    return;
+      return;
     }
 
     const productData = {
