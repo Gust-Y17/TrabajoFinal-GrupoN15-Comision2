@@ -3,12 +3,12 @@
     "username":"admin01", 
     "password":"ad123", 
     "rol":"ADMINISTRATIVO", 
-    "name":"administrador"
+    "name":"Administrador"
     },
     {"id":"usuario22", 
     "username":"user02", 
     "password":"us456", 
     "rol":"USUARIOCOMUN", 
-    "name":"usuario"
+    "name":"Usuario"
     } 
 ]
