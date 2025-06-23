@@ -87,11 +87,11 @@ function ProductosForm({ product = null }) {
   };
 
   return (
-    <Container className="d-flex justify-content-center mt-5">
-      <Card className="shadow p-4 w-100" style={{ maxWidth: '600px' }}>
-        <Card.Title className="mb-4 text-center fs-4 fw-bold">Nuevo Producto</Card.Title>
+    <Container className="formulario-contenedor">
+      <Card className="formulario-tarjeta">
+        <Card.Title className="formulario-titulo">Nuevo Producto</Card.Title>
         <form onSubmit={handleSubmit} className="needs-validation" noValidate>
-          <div className="mb-3 position-relative">
+          <div className="formulario-campo">
             <input
               className="form-control"
               type="text"
@@ -107,7 +107,7 @@ function ProductosForm({ product = null }) {
             </div>
           </div>
 
-          <div className="mb-3">
+          <div className="formulario-campo">
             <input
               className="form-control"
               type="number"
@@ -123,7 +123,7 @@ function ProductosForm({ product = null }) {
             </div>
           </div>
 
-          <div className="mb-3">
+          <div className="formulario-campo">
             <select
               className="form-control"
               name="category"
@@ -139,7 +139,7 @@ function ProductosForm({ product = null }) {
             </select>
           </div>
 
-          <div className="mb-3">
+          <div className="formulario-campo">
             <textarea
               className="form-control"
               name="description"
@@ -152,7 +152,7 @@ function ProductosForm({ product = null }) {
             />
           </div>
 
-          <div className="mb-3">
+          <div className="formulario-campo">
             <input
               className="form-control"
               type="file"
@@ -163,7 +163,7 @@ function ProductosForm({ product = null }) {
             />
           </div>
 
-          <div className="d-flex justify-content-between">
+          <div className="botones contenedores">
             <Button variant="primary" type="submit">Guardar</Button>
             <Button variant="secondary" type="button" onClick={resetForm}>Cancelar</Button>
           </div>

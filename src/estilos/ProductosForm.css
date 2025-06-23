@@ -25,3 +25,38 @@
 .was-validated .form-control:invalid ~ .invalid-feedback {
   display: block;
 }
+
+/* Contenedor principal */
+.formulario-contenedor {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+/* Tarjeta del formulario */
+.formulario-tarjeta {
+  width: 100%;
+  max-width: 600px;
+  padding: 1.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Título del formulario */
+.formulario-titulo {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Campos del formulario */
+.formulario-campo {
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+/* Contenedor de botones */
+.botones-contenedor {
+  display: flex;
+  justify-content: space-between;
+}

@@ -30,13 +30,13 @@ const ProductoCard = ({ product }) => {
   };
 
   return (
-    <Card className="shadow-sm h-100 position-relative">
+    <Card className="producto-card">
       {/* Imagen del producto */}
-      <img src={product.image} className="card-img-top" alt={product.title} />
+      <img src={product.image} className="producto-imagen" alt={product.title} />
 
       {/* Botón de favorito */}
       <button
-        className={`btn btn-light rounded-circle position-absolute top-0 end-0 m-2 ${isFavorito ? "text-danger" : "text-secondary"
+        className={`boton-favorito ${isFavorito ? "text-danger" : "text-secondary"
           }`}
         onClick={handleFavoriteClick}
       >
@@ -44,12 +44,12 @@ const ProductoCard = ({ product }) => {
       </button>
 
       {/* Información del producto */}
-      <Card.Body className="d-flex flex-column">
+      <Card.Body className="cuerpo-tarjeta">
         {/* Categoría */}
-        <Card.Subtitle className="mb-2 text-muted small">{product.category}</Card.Subtitle>
+        <Card.Subtitle className="subtitulo-producto">{product.category}</Card.Subtitle>
 
         {/* Título */}
-        <Card.Title className="text-center fs-6" style={{ overflow: 'hidden', WebkitBoxOrient: 'vertical' }}>
+        <Card.Title className="titulo-producto" style={{ overflow: 'hidden', WebkitBoxOrient: 'vertical' }}>
           {product.title}
         </Card.Title>
 
@@ -61,10 +61,10 @@ const ProductoCard = ({ product }) => {
 
         <div className="mt-auto">
           {/* Precio */}
-          <div className="fw-bold text-primary fs-5 mb-2">${product.price}</div>
+          <div className="precio-producto">${product.price}</div>
 
           {/* Ver detalles */}
-          <Button variant="info" className="w-100" onClick={() => handleVerDetalle(product)}>
+          <Button variant="info" className="boton-detalles" onClick={() => handleVerDetalle(product)}>
             Ver Detalles
           </Button>
 
