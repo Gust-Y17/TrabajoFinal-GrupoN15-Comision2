@@ -13,7 +13,7 @@ function FormularioProducto({ formData, onChange, onSubmit, onCancel, modo }) {
             value={formData.title}
             onChange={onChange}
             placeholder="nombre del producto"
-            pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$"
+             pattern="^[A-Za-zÁÉÍÓÚáéíóúÑñ\s\-_\.]+$"
             required
           />
           <div className="invalid-feedback mb-2">
