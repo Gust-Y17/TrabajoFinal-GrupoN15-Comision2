@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 const ConfirmarEliminarModal = ({ show, handleClose, onConfirmar, mensaje = "¿Estás seguro de que querés eliminar esto?" }) => {
   return (
     <Modal show={show} onHide={handleClose} centered size="sm">
-      <Modal.Header closeButton className="bg-light">
+      <Modal.Header >
         <Modal.Title className="text-danger">Confirmar eliminación</Modal.Title>
       </Modal.Header>
 

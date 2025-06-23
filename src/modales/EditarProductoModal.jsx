@@ -14,7 +14,7 @@ const EditarProductoModal = ({ show, handleClose, producto, onGuardar }) => {
 
   return (
     <Modal show={show} onHide={handleClose} backdrop="static" centered size="lg">
-      <Modal.Header closeButton>
+      <Modal.Header >
         <Modal.Title>Editar Producto</Modal.Title>
       </Modal.Header>
       <Modal.Body>

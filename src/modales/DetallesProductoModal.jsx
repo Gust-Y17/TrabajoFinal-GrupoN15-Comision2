@@ -5,7 +5,7 @@ const DetalleProductoModal = ({ show, handleClose, producto }) => {
 
   return (
     <Modal show={show} onHide={handleClose} backdrop="static" centered>
-      <Modal.Header closeButton className="bg-light">
+      <Modal.Header>
         <Modal.Title className="text-primary">
           {producto.title || 'Sin título'}
         </Modal.Title>
